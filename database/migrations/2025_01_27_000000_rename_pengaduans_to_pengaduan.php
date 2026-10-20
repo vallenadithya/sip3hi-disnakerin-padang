@@ -12,34 +12,50 @@ return new class extends Migration
      */
     public function up(): void
     {
+        if (!Schema::hasTable('pengaduans')) {
+            return;
+        }
+
         // Step 1: Drop foreign key constraints yang mereferensikan pengaduans
-        Schema::table('jadwal', function (Blueprint $table) {
-            $table->dropForeign(['pengaduan_id']);
-        });
+        if (Schema::hasTable('jadwal')) {
+            Schema::table('jadwal', function (Blueprint $table) {
+                $table->dropForeign(['pengaduan_id']);
+            });
+        }
 
-        Schema::table('dokumen_hubungan_industrial', function (Blueprint $table) {
-            $table->dropForeign(['pengaduan_id']);
-        });
+        if (Schema::hasTable('dokumen_hubungan_industrial')) {
+            Schema::table('dokumen_hubungan_industrial', function (Blueprint $table) {
+                $table->dropForeign(['pengaduan_id']);
+            });
+        }
 
-        Schema::table('laporan_pengadilan_hi', function (Blueprint $table) {
-            $table->dropForeign(['pengaduan_id']);
-        });
+        if (Schema::hasTable('laporan_pengadilan_hi')) {
+            Schema::table('laporan_pengadilan_hi', function (Blueprint $table) {
+                $table->dropForeign(['pengaduan_id']);
+            });
+        }
 
         // Step 2: Rename tabel pengaduans menjadi pengaduan
         Schema::rename('pengaduans', 'pengaduan');
 
         // Step 3: Recreate foreign key constraints dengan nama tabel baru
-        Schema::table('jadwal', function (Blueprint $table) {
-            $table->foreign('pengaduan_id')->references('pengaduan_id')->on('pengaduan')->onDelete('cascade');
-        });
+        if (Schema::hasTable('jadwal')) {
+            Schema::table('jadwal', function (Blueprint $table) {
+                $table->foreign('pengaduan_id')->references('pengaduan_id')->on('pengaduan')->onDelete('cascade');
+            });
+        }
 
-        Schema::table('dokumen_hubungan_industrial', function (Blueprint $table) {
-            $table->foreign('pengaduan_id')->references('pengaduan_id')->on('pengaduan');
-        });
+        if (Schema::hasTable('dokumen_hubungan_industrial')) {
+            Schema::table('dokumen_hubungan_industrial', function (Blueprint $table) {
+                $table->foreign('pengaduan_id')->references('pengaduan_id')->on('pengaduan');
+            });
+        }
 
-        Schema::table('laporan_pengadilan_hi', function (Blueprint $table) {
-            $table->foreign('pengaduan_id')->references('pengaduan_id')->on('pengaduan')->onDelete('cascade');
-        });
+        if (Schema::hasTable('laporan_pengadilan_hi')) {
+            Schema::table('laporan_pengadilan_hi', function (Blueprint $table) {
+                $table->foreign('pengaduan_id')->references('pengaduan_id')->on('pengaduan')->onDelete('cascade');
+            });
+        }
     }
 
     /**

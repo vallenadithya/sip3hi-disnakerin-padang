@@ -15,6 +15,7 @@ use App\Http\Controllers\Jadwal\KonfirmasiController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Pengaduan\PengaduanController;
 use App\Http\Controllers\Notifikasi\NotificationController;
+use App\Http\Controllers\PelaporanPhk\PelaporanPhkController;
 
 
 Route::get('/', function () {
@@ -62,6 +63,17 @@ Route::middleware(['auth', 'verified'])->group(function () {
                 abort(403, 'Role tidak valid: ' . $role);
         }
     })->name('dashboard');
+
+    // Modul Pelaporan PHK (Disnakerin Kota Padang)
+    Route::prefix('pelaporan-phk')->name('pelaporan-phk.')->group(function () {
+        Route::get('/', [PelaporanPhkController::class, 'index'])->name('index');
+        Route::get('/create', [PelaporanPhkController::class, 'create'])->name('create');
+        Route::post('/', [PelaporanPhkController::class, 'store'])->name('store');
+        Route::get('/statistik', [PelaporanPhkController::class, 'statistik'])->middleware('check.role:mediator,kepala_dinas')->name('statistik');
+        Route::get('/{id}', [PelaporanPhkController::class, 'show'])->name('show');
+        Route::post('/{id}/verifikasi', [PelaporanPhkController::class, 'verifikasi'])->middleware('check.role:mediator,kepala_dinas')->name('verifikasi');
+        Route::get('/{id}/cetak', [PelaporanPhkController::class, 'cetak'])->name('cetak');
+    });
 });
 
 // Routes Pengaduan 

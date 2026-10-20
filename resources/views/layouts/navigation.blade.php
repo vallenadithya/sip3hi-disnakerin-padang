@@ -25,6 +25,11 @@
                         </x-nav-link>
                     </div>
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('pelaporan-phk.index')" :active="request()->routeIs('pelaporan-phk.*')">
+                            {{ __('Pelaporan PHK') }}
+                        </x-nav-link>
+                    </div>
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link :href="route('laporan.hasil-mediasi')" :active="request()->routeIs('laporan.*')">
                             {{ __('Laporan') }}
                         </x-nav-link>
@@ -44,6 +49,12 @@
                     </div>
 
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('pelaporan-phk.index')" :active="request()->routeIs('pelaporan-phk.*')">
+                            {{ __('Pelaporan PHK') }}
+                        </x-nav-link>
+                    </div>
+
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link :href="route('laporan.hasil-mediasi')" :active="request()->routeIs('laporan.*')">
                             {{ __('Laporan') }}
                         </x-nav-link>
@@ -58,6 +69,11 @@
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link :href="route('pengaduan.kelola')" :active="request()->routeIs('pengaduan.kelola')">
                             {{ __('Kelola Pengaduan') }}
+                        </x-nav-link>
+                    </div>
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('pelaporan-phk.index')" :active="request()->routeIs('pelaporan-phk.*')">
+                            {{ __('Pelaporan PHK') }}
                         </x-nav-link>
                     </div>
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
@@ -88,6 +104,16 @@
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link :href="route('dashboard.kepala-dinas')" :active="request()->routeIs('dashboard.kepala-dinas')">
                             {{ __('Dashboard') }}
+                        </x-nav-link>
+                    </div>
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('pelaporan-phk.index')" :active="request()->routeIs('pelaporan-phk.index') || request()->routeIs('pelaporan-phk.show')">
+                            {{ __('Pelaporan PHK') }}
+                        </x-nav-link>
+                    </div>
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('pelaporan-phk.statistik')" :active="request()->routeIs('pelaporan-phk.statistik')">
+                            {{ __('Statistik PHK') }}
                         </x-nav-link>
                     </div>
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">

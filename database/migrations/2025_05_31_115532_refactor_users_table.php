@@ -8,6 +8,11 @@ return new class extends Migration
 {
     public function up()
     {
+        // Jika tabel users sudah memiliki user_id, tidak perlu refactor
+        if (!Schema::hasTable('users') || Schema::hasColumn('users', 'user_id')) {
+            return;
+        }
+
         // Rename tabel users lama ke users_backup
         Schema::rename('users', 'users_backup');
 

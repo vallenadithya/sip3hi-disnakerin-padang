@@ -92,6 +92,11 @@ class User extends Authenticatable
         return $this->hasOne(KepalaDinas::class, 'user_id', 'user_id');
     }
 
+    public function pelaporanPhk()
+    {
+        return $this->hasMany(PelaporanPhk::class, 'user_id', 'user_id');
+    }
+
     // Role management methods
     public function addRole($role)
     {

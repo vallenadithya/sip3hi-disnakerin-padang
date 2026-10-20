@@ -85,12 +85,12 @@
                             <div class="text-center lg:text-left space-y-8">
                                 <div class="space-y-6">
                                     <h1
-                                        class="text-xl lg:text-2xl xl:text-4xl font-bold text-white leading-tight animate-slide-up">
-                                        Sistem Informasi Pengaduan dan Penyelesaian Perselisihan Hubungan Industrial
+                                        class="text-xl lg:text-2xl xl:text-3xl font-bold text-white leading-tight animate-slide-up">
+                                        Sistem Informasi Penyelesaian Perselisihan Hubungan Industrial & Pelaporan PHK
                                     </h1>
                                     <div class="w-24 h-1 bg-accent mx-auto lg:mx-0 rounded-full"></div>
                                     <p class="text-xl lg:text-2xl text-white/90 font-medium">
-                                        Kabupaten Bungo
+                                        Dinas Tenaga Kerja dan Perindustrian Kota Padang
                                     </p>
                                 </div>
 
@@ -175,10 +175,8 @@
                             <div class="max-w-4xl mx-auto">
                                 <p class="text-xl text-gray-600 leading-relaxed">
                                     Sistem ini adalah platform digital yang dikembangkan oleh Dinas Tenaga Kerja dan
-                                    Transmigrasi Kabupaten Bungo untuk memfasilitasi proses pengaduan dan penyelesaian
-                                    perselisihan hubungan industrial. Melalui sistem ini, pekerja/buruh dan pengusaha
-                                    dapat mengajukan pengaduan terkait perselisihan hubungan kerja dengan mudah, cepat,
-                                    dan transparan.
+                                    Perindustrian Kota Padang untuk memfasilitasi proses pengaduan, penyelesaian
+                                    perselisihan hubungan industrial, serta pencatatan dan verifikasi pelaporan PHK resmi sesuai PP No. 35 Tahun 2021.
                                 </p>
                             </div>
                         </div>
@@ -401,7 +399,7 @@
                                         </div>
                                         <div class="text-left">
                                             <p class="text-sm text-gray-500 font-medium">Email</p>
-                                            <p class="text-gray-800 font-semibold">nakertrans@bungokab.go.id</p>
+                                            <p class="text-gray-800 font-semibold">disnakerin@padang.go.id</p>
                                         </div>
                                     </div>
                                     <div
@@ -414,7 +412,7 @@
                                         </div>
                                         <div class="text-left">
                                             <p class="text-sm text-gray-500 font-medium">Telepon</p>
-                                            <p class="text-gray-800 font-semibold">(0747) 21013</p>
+                                            <p class="text-gray-800 font-semibold">(0751) 7052345</p>
                                         </div>
                                     </div>
                                 </div>
@@ -429,8 +427,8 @@
         <footer class="bg-white border-t border-gray-200 py-8">
             <div class="max-w-7xl mx-auto px-4 text-center">
                 <p class="text-gray-600">
-                    &copy; {{ date('Y') }} <span class="font-semibold">Dinas Tenaga Kerja dan Transmigrasi
-                        Kabupaten Bungo</span>. All rights reserved.
+                    &copy; {{ date('Y') }} <span class="font-semibold">Dinas Tenaga Kerja dan Perindustrian
+                        Kota Padang</span>. All rights reserved.
                 </p>
             </div>
         </footer>
