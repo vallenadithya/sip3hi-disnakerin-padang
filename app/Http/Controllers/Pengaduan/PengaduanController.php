@@ -6,6 +6,7 @@ use App\Models\Pelapor;
 use App\Models\Mediator;
 use App\Models\Terlapor;
 use App\Models\Pengaduan;
+use App\Models\PelaporanPhk;
 use Illuminate\Http\Request;
 use App\Events\PengaduanCreated;
 use App\Http\Controllers\Controller;
@@ -135,6 +136,9 @@ class PengaduanController extends Controller
             abort(403, 'Access denied');
         }
 
+        $activeTab = $request->get('tab', 'perselisihan');
+
+        // Query Pengaduan Perselisihan
         $query = Pengaduan::with([
             'pelapor.user',
             'terlapor.user',
@@ -143,8 +147,7 @@ class PengaduanController extends Controller
             'dokumenHI.risalah'
         ]);
 
-        // Filter pencarian
-        if ($request->filled('q')) {
+        if ($request->filled('q') && $activeTab === 'perselisihan') {
             $q = $request->input('q');
             $query->where(function ($sub) use ($q) {
                 $sub->where('nomor_pengaduan', 'like', "%$q%")
@@ -160,26 +163,38 @@ class PengaduanController extends Controller
             });
         }
 
-        $pengaduans = $query->orderBy('created_at', 'desc')->paginate(15)->withQueryString();
+        $pengaduans = $query->orderBy('created_at', 'desc')->paginate(15, ['*'], 'page_perselisihan')->withQueryString();
 
-        if ($user->active_role === 'mediator') {
-            $mediator = $user->mediator;
-            $stats = [
-                'total_semua_pengaduan' => Pengaduan::count(),
-                'total_kasus' => Pengaduan::count(),
-                'kasus_aktif' => Pengaduan::whereIn('status', ['pending', 'proses'])->count(),
-                'kasus_selesai' => Pengaduan::where('status', 'selesai')->count(),
-                'pengaduan_tersedia' => Pengaduan::whereNull('mediator_id')->count(),
-            ];
-        } else {
-            $stats = [
-                'total_kasus' => Pengaduan::count(),
-                'kasus_aktif' => Pengaduan::whereIn('status', ['pending', 'proses'])->count(),
-                'kasus_selesai' => Pengaduan::where('status', 'selesai')->count(),
-            ];
+        // Query Pelaporan PHK (PP 35/2021)
+        $phkQuery = PelaporanPhk::with(['pekerja', 'verifikator']);
+        if ($request->filled('q') && $activeTab === 'phk') {
+            $q = $request->input('q');
+            $phkQuery->where(function ($sub) use ($q) {
+                $sub->where('nama_perusahaan', 'like', "%$q%")
+                    ->orWhere('nomor_lapor', 'like', "%$q%")
+                    ->orWhere('nomor_bukti_lapor_dinas', 'like', "%$q%");
+            });
         }
+        $pelaporanPhkList = $phkQuery->orderBy('created_at', 'desc')->paginate(15, ['*'], 'page_phk')->withQueryString();
 
-        return view('pengaduan.kelola', compact('pengaduans', 'stats'));
+        $totalPengaduan = Pengaduan::count();
+        $totalPhk = PelaporanPhk::count();
+
+        $stats = [
+            'total_semua_berkas' => $totalPengaduan + $totalPhk,
+            'total_semua_pengaduan' => $totalPengaduan,
+            'total_kasus' => $totalPengaduan,
+            'kasus_aktif' => Pengaduan::whereIn('status', ['pending', 'proses'])->count(),
+            'kasus_selesai' => Pengaduan::where('status', 'selesai')->count(),
+            'pengaduan_tersedia' => Pengaduan::whereNull('mediator_id')->count(),
+            // PHK stats
+            'total_phk' => $totalPhk,
+            'phk_menunggu' => PelaporanPhk::where('status', 'menunggu_verifikasi')->count(),
+            'phk_terverifikasi' => PelaporanPhk::where('status', 'terverifikasi')->count(),
+            'phk_total_pekerja' => PelaporanPhk::sum('total_pekerja'),
+        ];
+
+        return view('pengaduan.kelola', compact('pengaduans', 'pelaporanPhkList', 'stats', 'activeTab'));
     }
 
     /**

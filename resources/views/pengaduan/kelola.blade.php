@@ -1,461 +1,195 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Kelola Pengaduan</title>
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'primary': '#0000AB',
-                        'primary-light': '#3333CC',
-                        'primary-lighter': '#6666DD',
-                        'primary-dark': '#000088'
-                    }
-                }
-            }
-        }
-    </script>
-</head>
-
-<body>
-    <x-app-layout>
-        <x-slot name="header">
-            <div class="flex justify-between items-center">
-                <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                    {{ __('Kelola Pengaduan') }}
+<x-app-layout>
+    <x-slot name="header">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+            <div>
+                <h2 class="font-bold text-2xl text-gray-800 leading-tight flex items-center gap-2">
+                    <svg class="w-7 h-7 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                    </svg>
+                    Pusat Kelola Berkas Hubungan Industrial & PHK
                 </h2>
-                <!-- ✅ NEW: Mode indicator untuk mediator -->
-                @if (auth()->user()->role === 'mediator')
-                    <div class="text-sm text-gray-600">
-                        <span
-                            class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                            <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                            </svg>
-                            Semua Pengaduan Dapat Dilihat
-                        </span>
-                    </div>
-                @endif
+                <p class="text-xs text-gray-500 mt-0.5">
+                    Integrasi Pengaduan Perselisihan Bipartit/Mediasi & Pelaporan PHK Resmi (PP No. 35 Tahun 2021) — Disnakerin Kota Padang
+                </p>
             </div>
-        </x-slot>
+            <div class="flex items-center gap-2">
+                <a href="{{ route('pelaporan-phk.index') }}" class="inline-flex items-center px-3.5 py-2 bg-yellow-500 hover:bg-yellow-600 text-white rounded-lg text-xs font-bold shadow-sm transition">
+                    ⚠️ Verifikasi PHK ({{ $stats['phk_menunggu'] ?? 0 }})
+                </a>
+            </div>
+        </div>
+    </x-slot>
 
-        <div class="py-4">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <!-- Statistics Cards with different data for mediator vs kepala dinas -->
-                <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
-                    @if (auth()->user()->role === 'mediator')
-                        <!-- Stats untuk Mediator -->
-                        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                            <div class="p-6">
-                                <div class="flex items-center">
-                                    <div class="p-3 bg-blue-100 rounded-lg">
-                                        <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
-                                            <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"></path>
-                                            <path fill-rule="evenodd"
-                                                d="M4 5a2 2 0 012-2v1a1 1 0 001 1h6a1 1 0 001-1V3a2 2 0 012 2v6a2 2 0 01-2 2H6a2 2 0 01-2-2V5z"
-                                                clip-rule="evenodd"></path>
-                                        </svg>
-                                    </div>
-                                    <div class="ml-4">
-                                        <p class="text-gray-600 text-sm">Total Semua Pengaduan</p>
-                                        <p class="text-2xl font-bold text-gray-900">
-                                            {{ $stats['total_semua_pengaduan'] ?? ($stats['total_kasus'] ?? 0) }}
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+    <div class="py-6">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
 
-                        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                            <div class="p-6">
-                                <div class="flex items-center">
-                                    <div class="p-3 bg-yellow-100 rounded-lg">
-                                        <svg class="w-6 h-6 text-yellow-600" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd"
-                                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
-                                                clip-rule="evenodd"></path>
-                                        </svg>
-                                    </div>
-                                    <div class="ml-4">
-                                        <p class="text-gray-600 text-sm">Kasus Aktif</p>
-                                        <p class="text-2xl font-bold text-gray-900">
-                                            {{ $stats['kasus_aktif'] }}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                            <div class="p-6">
-                                <div class="flex items-center">
-                                    <div class="p-3 bg-green-100 rounded-lg">
-                                        <svg class="w-6 h-6 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd"
-                                                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                                clip-rule="evenodd"></path>
-                                        </svg>
-                                    </div>
-                                    <div class="ml-4">
-                                        <p class="text-gray-600 text-sm">Kasus Selesai</p>
-                                        <p class="text-2xl font-bold text-gray-900">
-                                            {{ $stats['kasus_selesai'] }}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                            <div class="p-6">
-                                <div class="flex items-center">
-                                    <div class="p-3 bg-purple-100 rounded-lg">
-                                        <svg class="w-6 h-6 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd"
-                                                d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1z"
-                                                clip-rule="evenodd"></path>
-                                        </svg>
-                                    </div>
-                                    <div class="ml-4">
-                                        <p class="text-gray-600 text-sm">Tersedia Diambil</p>
-                                        <p class="text-2xl font-bold text-gray-900">
-                                            {{ $stats['pengaduan_tersedia'] ?? 0 }}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @else
-                        <!-- Stats untuk Kepala Dinas (tidak berubah) -->
-                        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                            <div class="p-6">
-                                <div class="flex items-center">
-                                    <div class="p-3 bg-blue-100 rounded-lg">
-                                        <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
-                                            <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"></path>
-                                            <path fill-rule="evenodd"
-                                                d="M4 5a2 2 0 012-2v1a1 1 0 001 1h6a1 1 0 001-1V3a2 2 0 012 2v6a2 2 0 01-2 2H6a2 2 0 01-2-2V5z"
-                                                clip-rule="evenodd"></path>
-                                        </svg>
-                                    </div>
-                                    <div class="ml-4">
-                                        <p class="text-gray-600 text-sm">Total Pengaduan</p>
-                                        <p class="text-2xl font-bold text-gray-900">
-                                            {{ $stats['total_kasus'] ?? 0 }}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                            <div class="p-6">
-                                <div class="flex items-center">
-                                    <div class="p-3 bg-yellow-100 rounded-lg">
-                                        <svg class="w-6 h-6 text-yellow-600" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd"
-                                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
-                                                clip-rule="evenodd"></path>
-                                        </svg>
-                                    </div>
-                                    <div class="ml-4">
-                                        <p class="text-gray-600 text-sm">Kasus Aktif</p>
-                                        <p class="text-2xl font-bold text-gray-900">{{ $stats['kasus_aktif'] ?? 0 }}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                            <div class="p-6">
-                                <div class="flex items-center">
-                                    <div class="p-3 bg-green-100 rounded-lg">
-                                        <svg class="w-6 h-6 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd"
-                                                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                                clip-rule="evenodd"></path>
-                                        </svg>
-                                    </div>
-                                    <div class="ml-4">
-                                        <p class="text-gray-600 text-sm">Kasus Selesai</p>
-                                        <p class="text-2xl font-bold text-gray-900">{{ $stats['kasus_selesai'] ?? 0 }}
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endif
-                </div>
-                <br>
-
-                <!-- Kolom Pencarian -->
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mb-6">
-                    <div class="p-6">
-                        <form method="GET" action="" class="flex flex-wrap gap-4">
-                            <div class="flex-1 min-w-32">
-                                <input type="text" name="q" value="{{ request('q') }}"
-                                    placeholder="Cari pengaduan..."
-                                    class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring" />
-                            </div>
-                            <button type="submit"
-                                class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg">Cari</button>
-                            @if (request('q'))
-                                <a href="{{ route('pengaduan.kelola') }}"
-                                    class="bg-gray-300 hover:bg-gray-400 text-gray-700 px-4 py-2 rounded-md">Reset</a>
-                            @endif
-                        </form>
+            <!-- 4 Top KPI Cards Terintegrasi -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-between">
+                    <div>
+                        <p class="text-xs font-bold text-gray-400 uppercase tracking-wider">Total Seluruh Berkas</p>
+                        <p class="text-3xl font-extrabold text-gray-900 mt-1">{{ $stats['total_semua_berkas'] ?? 0 }}</p>
+                        <p class="text-[11px] text-gray-500 mt-1">
+                            <span class="text-blue-600 font-semibold">{{ $stats['total_semua_pengaduan'] ?? 0 }} Perselisihan</span> + <span class="text-indigo-600 font-semibold">{{ $stats['total_phk'] ?? 0 }} PHK</span>
+                        </p>
+                    </div>
+                    <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center font-bold text-xl">
+                        📁
                     </div>
                 </div>
 
-                <!-- Main Content -->
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mt-6">
+                <div class="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-between">
+                    <div>
+                        <p class="text-xs font-bold text-blue-600 uppercase tracking-wider">Perselisihan HI</p>
+                        <p class="text-3xl font-extrabold text-blue-600 mt-1">{{ $stats['total_semua_pengaduan'] ?? 0 }}</p>
+                        <p class="text-[11px] text-gray-500 mt-1">
+                            Aktif: <strong class="text-yellow-600">{{ $stats['kasus_aktif'] ?? 0 }}</strong> | Selesai: <strong class="text-green-600">{{ $stats['kasus_selesai'] ?? 0 }}</strong>
+                        </p>
+                    </div>
+                    <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center font-bold text-xl">
+                        ⚖️
+                    </div>
+                </div>
+
+                <div class="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-between">
+                    <div>
+                        <p class="text-xs font-bold text-indigo-600 uppercase tracking-wider">Pelaporan PHK</p>
+                        <p class="text-3xl font-extrabold text-indigo-600 mt-1">{{ $stats['total_phk'] ?? 0 }}</p>
+                        <p class="text-[11px] text-gray-500 mt-1">
+                            Menunggu: <strong class="text-yellow-600">{{ $stats['phk_menunggu'] ?? 0 }}</strong> | Sah: <strong class="text-green-600">{{ $stats['phk_terverifikasi'] ?? 0 }}</strong>
+                        </p>
+                    </div>
+                    <div class="w-12 h-12 bg-indigo-50 text-indigo-600 rounded-xl flex items-center justify-center font-bold text-xl">
+                        📄
+                    </div>
+                </div>
+
+                <div class="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-between">
+                    <div>
+                        <p class="text-xs font-bold text-purple-600 uppercase tracking-wider">Pekerja Ter-PHK</p>
+                        <p class="text-3xl font-extrabold text-purple-600 mt-1">{{ $stats['phk_total_pekerja'] ?? 0 }} <span class="text-sm font-semibold text-gray-500">Orang</span></p>
+                        <p class="text-[11px] text-gray-500 mt-1">
+                            Penerima Hak Kompensasi
+                        </p>
+                    </div>
+                    <div class="w-12 h-12 bg-purple-50 text-purple-600 rounded-xl flex items-center justify-center font-bold text-xl">
+                        👥
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Switcher Terpadu -->
+            <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-4">
+                <div class="flex flex-col sm:flex-row items-center justify-between gap-4 border-b pb-4 mb-4">
+                    <div class="flex space-x-2">
+                        <a href="{{ route('pengaduan.kelola', ['tab' => 'perselisihan']) }}"
+                            class="px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm flex items-center gap-2 transition {{ ($activeTab ?? 'perselisihan') === 'perselisihan' ? 'bg-blue-600 text-white shadow' : 'bg-gray-100 text-gray-600 hover:bg-gray-200' }}">
+                            ⚖️ Perselisihan Hubungan Industrial
+                            <span class="px-2 py-0.5 text-xs rounded-full {{ ($activeTab ?? 'perselisihan') === 'perselisihan' ? 'bg-blue-800 text-white' : 'bg-gray-200 text-gray-700' }}">
+                                {{ $stats['total_semua_pengaduan'] ?? 0 }}
+                            </span>
+                        </a>
+
+                        <a href="{{ route('pengaduan.kelola', ['tab' => 'phk']) }}"
+                            class="px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm flex items-center gap-2 transition {{ ($activeTab ?? 'perselisihan') === 'phk' ? 'bg-indigo-600 text-white shadow' : 'bg-gray-100 text-gray-600 hover:bg-gray-200' }}">
+                            📄 Pelaporan PHK (PP No. 35/2021)
+                            <span class="px-2 py-0.5 text-xs rounded-full {{ ($stats['phk_menunggu'] ?? 0) > 0 ? 'bg-yellow-400 text-gray-900 font-extrabold animate-pulse' : 'bg-gray-200 text-gray-700' }}">
+                                {{ $stats['total_phk'] ?? 0 }} ({{ $stats['phk_menunggu'] ?? 0 }} Butuh Verifikasi)
+                            </span>
+                        </a>
+                    </div>
+
+                    <!-- Search Form -->
+                    <form method="GET" action="{{ route('pengaduan.kelola') }}" class="flex items-center gap-2 w-full sm:w-auto">
+                        <input type="hidden" name="tab" value="{{ $activeTab ?? 'perselisihan' }}">
+                        <input type="text" name="q" value="{{ request('q') }}"
+                            placeholder="{{ ($activeTab ?? 'perselisihan') === 'phk' ? 'Cari nama perusahaan / no. lapor...' : 'Cari nomor pengaduan / pihak...' }}"
+                            class="text-xs rounded-lg border-gray-300 w-full sm:w-64 focus:ring-blue-500 focus:border-blue-500" />
+                        <button type="submit" class="bg-gray-800 hover:bg-gray-700 text-white text-xs font-bold py-2 px-3.5 rounded-lg transition">
+                            Cari
+                        </button>
+                        @if (request('q'))
+                            <a href="{{ route('pengaduan.kelola', ['tab' => $activeTab ?? 'perselisihan']) }}"
+                                class="bg-gray-200 hover:bg-gray-300 text-gray-700 text-xs font-medium py-2 px-2.5 rounded-lg transition">
+                                Reset
+                            </a>
+                        @endif
+                    </form>
+                </div>
+
+                <!-- TAB 1: KONTEN PERSELISIHAN HI -->
+                @if (($activeTab ?? 'perselisihan') === 'perselisihan')
                     @if (isset($pengaduans) && $pengaduans->count() > 0)
-                        <!-- Table with new Status Akun Terlapor column -->
                         <div class="overflow-x-auto">
-                            <table class="min-w-full divide-y divide-gray-200">
-                                <thead class="bg-gray-50">
+                            <table class="min-w-full divide-y divide-gray-200 text-xs">
+                                <thead class="bg-gray-50 text-gray-500 uppercase font-semibold">
                                     <tr>
-                                        <th
-                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            No</th>
-                                        <th
-                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Nomor Pengaduan</th>
-                                        <th
-                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Pelapor</th>
-                                        <th
-                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Perihal</th>
-                                        <th
-                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Pihak Terlapor</th>
-                                        <th
-                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Status Akun Terlapor</th>
-                                        <th
-                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Mediator</th>
-                                        <th
-                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Status</th>
-                                        <th
-                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Tanggal Laporan</th>
-                                        <th
-                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Aksi</th>
+                                        <th class="px-4 py-3 text-left">No</th>
+                                        <th class="px-4 py-3 text-left">Nomor Kasus & Tanggal</th>
+                                        <th class="px-4 py-3 text-left">Pelapor</th>
+                                        <th class="px-4 py-3 text-left">Perihal Kasus</th>
+                                        <th class="px-4 py-3 text-left">Pihak Terlapor</th>
+                                        <th class="px-4 py-3 text-left">Mediator Ditugaskan</th>
+                                        <th class="px-4 py-3 text-center">Status</th>
+                                        <th class="px-4 py-3 text-center">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody class="bg-white divide-y divide-gray-200">
                                     @foreach ($pengaduans as $index => $pengaduan)
                                         @php
                                             $currentUser = auth()->user();
-                                            $currentMediator =
-                                                $currentUser->active_role === 'mediator'
-                                                    ? $currentUser->mediator
-                                                    : null;
-                                            $isAssignedToCurrentUser =
-                                                $currentMediator &&
-                                                $pengaduan->mediator_id === $currentMediator->mediator_id;
+                                            $currentMediator = $currentUser->active_role === 'mediator' ? $currentUser->mediator : null;
+                                            $isAssignedToCurrentUser = $currentMediator && $pengaduan->mediator_id === $currentMediator->mediator_id;
                                             $isUnassigned = !$pengaduan->mediator_id;
-                                            $canTakeAction =
-                                                $isAssignedToCurrentUser ||
-                                                $currentUser->active_role === 'kepala_dinas';
-
-                                            $existingTerlapor = \App\Models\Terlapor::where(
-                                                'email_terlapor',
-                                                $pengaduan->email_terlapor,
-                                            )
-                                                ->whereHas('user')
-                                                ->first();
+                                            $canTakeAction = $isAssignedToCurrentUser || $currentUser->active_role === 'kepala_dinas';
                                         @endphp
-
-                                        <tr class="hover:bg-gray-50">
-                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        <tr class="hover:bg-gray-50 transition">
+                                            <td class="px-4 py-3 font-semibold text-gray-500">
                                                 {{ ($pengaduans->currentPage() - 1) * $pengaduans->perPage() + $index + 1 }}
                                             </td>
-                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                                {{ $pengaduan->nomor_pengaduan ?? '-' }}
+                                            <td class="px-4 py-3 font-medium">
+                                                <div class="font-mono text-blue-600 font-bold">{{ $pengaduan->nomor_pengaduan ?? 'PGD-' . $pengaduan->pengaduan_id }}</div>
+                                                <div class="text-[10px] text-gray-500">{{ \Carbon\Carbon::parse($pengaduan->tanggal_laporan)->format('d M Y') }}</div>
                                             </td>
-                                            <td class="px-6 py-4 whitespace-nowrap">
-                                                <div class="text-sm font-medium text-gray-900">
-                                                    {{ $pengaduan->pelapor->nama_pelapor ?? 'N/A' }}</div>
-                                                <div class="text-sm text-gray-500">
-                                                    {{ $pengaduan->pelapor->email ?? 'N/A' }}</div>
+                                            <td class="px-4 py-3 font-semibold text-gray-900">
+                                                {{ $pengaduan->pelapor->nama_pelapor ?? '-' }}
                                             </td>
-                                            <td class="px-6 py-4">
-                                                <div class="text-sm text-gray-900">{{ $pengaduan->perihal }}</div>
-                                                <div class="text-xs text-gray-500">Masa Kerja:
-                                                    {{ $pengaduan->masa_kerja }}</div>
-                                            </td>
-                                            <td class="px-6 py-4">
-                                                <div class="text-sm text-gray-900 max-w-xs">
-                                                    {{ $pengaduan->nama_terlapor ?? 'N/A' }}</div>
-                                                <div class="text-xs text-gray-500">
-                                                    {{ $pengaduan->email_terlapor ?? 'N/A' }}</div>
-                                            </td>
-                                            <td class="px-6 py-4 whitespace-nowrap">
-                                                @if ($existingTerlapor)
-                                                    <span
-                                                        class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
-                                                        Sudah Terdaftar
-                                                    </span>
-                                                @else
-                                                    <span
-                                                        class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100 text-gray-800">
-                                                        Belum Ada Akun
-                                                    </span>
-                                                @endif
-                                            </td>
-                                            <td class="px-6 py-4 whitespace-nowrap">
-                                                @if ($pengaduan->mediator)
-                                                    <div class="flex items-center">
-                                                        <div class="text-sm font-medium text-gray-900">
-                                                            {{ $pengaduan->mediator->nama_mediator }}
-                                                        </div>
-                                                        @if ($isAssignedToCurrentUser)
-                                                            <span
-                                                                class="ml-2 inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800">
-                                                                Anda
-                                                            </span>
-                                                        @endif
-                                                    </div>
-                                                    <div class="text-xs text-gray-500">
-                                                        {{ $pengaduan->assigned_at ? $pengaduan->assigned_at->format('d/m/Y') : '' }}
-                                                    </div>
-                                                @else
-                                                    <div class="flex items-center">
-                                                        <span class="text-sm text-gray-500 italic">Belum
-                                                            ditugaskan</span>
-                                                        @if ($currentUser->active_role === 'mediator')
-                                                            <span
-                                                                class="ml-2 inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-yellow-100 text-yellow-800">
-                                                                Dapat Diambil
-                                                            </span>
-                                                        @endif
-                                                    </div>
-                                                @endif
-                                            </td>
-                                            <td class="px-6 py-4 whitespace-nowrap">
-                                                @php
-                                                    $statusClass = match ($pengaduan->status) {
-                                                        'pending' => 'bg-yellow-100 text-yellow-800',
-                                                        'proses' => 'bg-blue-100 text-blue-800',
-                                                        'selesai' => 'bg-green-100 text-green-800',
-                                                        default => 'bg-gray-100 text-gray-800',
-                                                    };
-                                                @endphp
-                                                <span
-                                                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium {{ $statusClass }}">
-                                                    {{ ucfirst($pengaduan->status) }}
+                                            <td class="px-4 py-3">
+                                                <span class="inline-block px-2 py-0.5 rounded text-[10px] font-semibold bg-blue-50 text-blue-700">
+                                                    {{ $pengaduan->perihal }}
                                                 </span>
                                             </td>
-                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                                {{ $pengaduan->tanggal_laporan ? $pengaduan->tanggal_laporan->format('d/m/Y') : 'N/A' }}
+                                            <td class="px-4 py-3 text-gray-800">
+                                                {{ $pengaduan->terlapor->nama_terlapor ?? $pengaduan->nama_terlapor }}
                                             </td>
-                                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                                <div class="flex space-x-2">
-                                                    <!-- Detail button - semua bisa lihat -->
-                                                    <a href="{{ route('pengaduan.show', $pengaduan->pengaduan_id) }}"
-                                                        class="text-primary hover:text-primary-dark transition-colors">
-                                                        <svg class="w-4 h-4 inline mr-1" fill="none"
-                                                            stroke="currentColor" viewBox="0 0 24 24">
-                                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                                stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z">
-                                                            </path>
-                                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                                stroke-width="2"
-                                                                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
-                                                            </path>
-                                                        </svg>
-                                                        {{ $canTakeAction ? 'Kelola' : 'Lihat' }}
-                                                    </a>
-
-                                                    <!-- Aksi untuk terlapor yang sudah terdaftar -->
-                                                    @if ($existingTerlapor)
-                                                        @php
-                                                            $notificationSent =
-                                                                $pengaduan->terlapor_id ===
-                                                                $existingTerlapor->terlapor_id;
-                                                        @endphp
-                                                        @if ($notificationSent)
-                                                            <span class="inline-flex items-center text-gray-500">
-                                                                <svg class="w-4 h-4 mr-1" fill="none"
-                                                                    stroke="currentColor" viewBox="0 0 24 24">
-                                                                    <path stroke-linecap="round"
-                                                                        stroke-linejoin="round" stroke-width="2"
-                                                                        d="M5 13l4 4L19 7"></path>
-                                                                </svg>
-                                                                Notifikasi Terkirim
-                                                            </span>
-                                                        @else
-                                                            <form method="POST"
-                                                                action="{{ route('pengaduan.notify-existing-terlapor', $pengaduan) }}"
-                                                                class="inline">
-                                                                @csrf
-                                                                <button type="submit"
-                                                                    class="text-blue-600 hover:text-blue-900">
-                                                                    <svg class="w-4 h-4 inline mr-1" fill="none"
-                                                                        stroke="currentColor" viewBox="0 0 24 24">
-                                                                        <path stroke-linecap="round"
-                                                                            stroke-linejoin="round" stroke-width="2"
-                                                                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
-                                                                        </path>
-                                                                    </svg>
-                                                                    Kirim Notifikasi
-                                                                </button>
-                                                            </form>
-                                                        @endif
-                                                    @endif
-
-                                                    <!-- Ambil button untuk pengaduan yang belum diambil -->
-                                                    @if ($isUnassigned && $currentUser->active_role === 'mediator')
-                                                        <form method="POST"
-                                                            action="{{ route('pengaduan.assign', $pengaduan->pengaduan_id) }}"
-                                                            class="inline">
-                                                            @csrf
-                                                            <button type="submit"
-                                                                class="text-green-600 hover:text-green-900 transition-colors"
-                                                                onclick="return confirm('Ambil pengaduan ini untuk ditangani?')">
-                                                                <svg class="w-4 h-4 inline mr-1" fill="none"
-                                                                    stroke="currentColor" viewBox="0 0 24 24">
-                                                                    <path stroke-linecap="round"
-                                                                        stroke-linejoin="round" stroke-width="2"
-                                                                        d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
-                                                                </svg>
-                                                                Ambil
-                                                            </button>
-                                                        </form>
-                                                    @endif
-
-                                                    <!-- Quick status buttons hanya untuk yang authorized -->
-                                                    @if ($canTakeAction)
-                                                        @if ($pengaduan->status === 'pending')
-                                                            <button
-                                                                onclick="updateStatus({{ $pengaduan->pengaduan_id }}, 'proses')"
-                                                                class="text-blue-600 hover:text-blue-900 transition-colors">
-                                                                <svg class="w-4 h-4 inline mr-1" fill="none"
-                                                                    stroke="currentColor" viewBox="0 0 24 24">
-                                                                    <path stroke-linecap="round"
-                                                                        stroke-linejoin="round" stroke-width="2"
-                                                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z">
-                                                                    </path>
-                                                                </svg>
-                                                                Proses
-                                                            </button>
-                                                        @endif
-                                                    @elseif ($currentUser->active_role === 'mediator' && !$isUnassigned)
-                                                        <!-- Show disabled message for mediator non-assigned -->
-                                                        <span class="text-gray-400 text-xs italic">
-                                                            Lihat saja
-                                                        </span>
-                                                    @endif
-                                                </div>
+                                            <td class="px-4 py-3">
+                                                @if ($pengaduan->mediator)
+                                                    <span class="font-semibold text-gray-900">{{ $pengaduan->mediator->nama_mediator }}</span>
+                                                @else
+                                                    <span class="text-orange-600 italic font-semibold">Belum Ditugaskan</span>
+                                                @endif
+                                            </td>
+                                            <td class="px-4 py-3 text-center">
+                                                @if($pengaduan->status === 'selesai')
+                                                    <span class="px-2.5 py-1 text-[10px] font-bold rounded-full bg-green-100 text-green-800">Selesai</span>
+                                                @elseif($pengaduan->status === 'proses')
+                                                    <span class="px-2.5 py-1 text-[10px] font-bold rounded-full bg-blue-100 text-blue-800">Proses</span>
+                                                @else
+                                                    <span class="px-2.5 py-1 text-[10px] font-bold rounded-full bg-yellow-100 text-yellow-800">Pending</span>
+                                                @endif
+                                            </td>
+                                            <td class="px-4 py-3 text-center space-x-1 whitespace-nowrap">
+                                                <a href="{{ route('pengaduan.kelola.show', $pengaduan->pengaduan_id) }}" class="px-3 py-1.5 bg-blue-50 text-blue-700 hover:bg-blue-100 font-bold rounded-lg text-xs transition inline-block">
+                                                    Detail
+                                                </a>
+                                                @if ($isUnassigned && $currentUser->active_role === 'mediator')
+                                                    <form method="POST" action="{{ route('pengaduan.assign', $pengaduan->pengaduan_id) }}" class="inline">
+                                                        @csrf
+                                                        <button type="submit" class="px-3 py-1.5 bg-green-600 text-white hover:bg-green-700 font-bold rounded-lg text-xs transition" onclick="return confirm('Ambil kasus ini untuk Anda tangani?')">
+                                                            Ambil Kasus
+                                                        </button>
+                                                    </form>
+                                                @endif
                                             </td>
                                         </tr>
                                     @endforeach
@@ -463,85 +197,111 @@
                             </table>
                         </div>
 
-                        <!-- Pagination -->
                         @if (method_exists($pengaduans, 'links'))
-                            <div class="px-6 py-4 border-t border-gray-200">
+                            <div class="px-4 py-3 border-t border-gray-200">
                                 {{ $pengaduans->links() }}
                             </div>
                         @endif
                     @else
-                        <!-- Empty State -->
-                        <div class="p-12">
-                            <div class="text-center">
-                                <div
-                                    class="mx-auto w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mb-6">
-                                    <svg class="w-12 h-12 text-gray-400" fill="none" stroke="currentColor"
-                                        viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
-                                        </path>
-                                    </svg>
-                                </div>
-
-                                <div class="max-w-md mx-auto">
-                                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Belum ada pengaduan</h3>
-                                    <p class="text-gray-600 mb-8 leading-relaxed">
-                                        Saat ini belum ada pengaduan yang perlu dikelola. Pengaduan baru akan muncul di
-                                        sini.
-                                    </p>
-                                </div>
-                            </div>
+                        <div class="p-10 text-center text-gray-500">
+                            <p class="text-base font-semibold text-gray-800">Belum ada pengaduan perselisihan</p>
+                            <p class="text-xs text-gray-500 mt-1">Semua kasus perselisihan bipartit dan mediasi akan tampil di tab ini.</p>
                         </div>
                     @endif
-                </div>
+
+                <!-- TAB 2: KONTEN PELAPORAN PHK -->
+                @else
+                    @if (isset($pelaporanPhkList) && $pelaporanPhkList->count() > 0)
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full divide-y divide-gray-200 text-xs">
+                                <thead class="bg-gray-50 text-gray-500 uppercase font-semibold">
+                                    <tr>
+                                        <th class="px-4 py-3 text-left">No. Lapor & Tanggal</th>
+                                        <th class="px-4 py-3 text-left">Perusahaan & Sektor</th>
+                                        <th class="px-4 py-3 text-left">Alasan PHK (PP 35/2021)</th>
+                                        <th class="px-4 py-3 text-center">Pekerja</th>
+                                        <th class="px-4 py-3 text-right">Total Hak</th>
+                                        <th class="px-4 py-3 text-center">Status Disnakerin</th>
+                                        <th class="px-4 py-3 text-center">Aksi Verifikasi</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="bg-white divide-y divide-gray-200">
+                                    @foreach ($pelaporanPhkList as $phk)
+                                        <tr class="hover:bg-gray-50 transition">
+                                            <td class="px-4 py-3 whitespace-nowrap">
+                                                <div class="font-mono text-blue-600 font-bold">{{ $phk->nomor_lapor }}</div>
+                                                <div class="text-[10px] text-gray-500">{{ $phk->created_at->format('d M Y') }}</div>
+                                                @if($phk->nomor_bukti_lapor_dinas)
+                                                    <span class="inline-block px-1.5 py-0.5 rounded text-[9px] font-mono bg-green-50 text-green-700 font-semibold mt-1">
+                                                        {{ $phk->nomor_bukti_lapor_dinas }}
+                                                    </span>
+                                                @endif
+                                            </td>
+                                            <td class="px-4 py-3">
+                                                <div class="font-bold text-gray-900">{{ $phk->nama_perusahaan }}</div>
+                                                <div class="text-[10px] text-gray-500">{{ $phk->sektor_usaha }}</div>
+                                            </td>
+                                            <td class="px-4 py-3 max-w-xs">
+                                                <div class="font-medium text-gray-800 line-clamp-2" title="{{ $phk->alasan_phk }}">{{ $phk->alasan_phk }}</div>
+                                                <div class="text-[10px] text-gray-400 mt-0.5">Efektif: {{ $phk->tanggal_efektif_phk->format('d M Y') }}</div>
+                                            </td>
+                                            <td class="px-4 py-3 text-center whitespace-nowrap">
+                                                <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-indigo-100 text-indigo-800">
+                                                    {{ $phk->total_pekerja }} Orang
+                                                </span>
+                                            </td>
+                                            <td class="px-4 py-3 text-right whitespace-nowrap font-bold text-gray-900">
+                                                Rp {{ number_format($phk->total_kompensasi, 0, ',', '.') }}
+                                            </td>
+                                            <td class="px-4 py-3 text-center whitespace-nowrap">
+                                                @if($phk->status === 'terverifikasi')
+                                                    <span class="px-2.5 py-1 text-[10px] font-bold rounded-full bg-green-100 text-green-800">
+                                                        ✓ Terverifikasi
+                                                    </span>
+                                                @elseif($phk->status === 'menunggu_verifikasi')
+                                                    <span class="px-2.5 py-1 text-[10px] font-bold rounded-full bg-yellow-100 text-yellow-800 animate-pulse">
+                                                        ⏳ Menunggu Verifikasi
+                                                    </span>
+                                                @elseif($phk->status === 'perlu_revisi')
+                                                    <span class="px-2.5 py-1 text-[10px] font-bold rounded-full bg-orange-100 text-orange-800">
+                                                        ⚠️ Perlu Revisi
+                                                    </span>
+                                                @else
+                                                    <span class="px-2.5 py-1 text-[10px] font-bold rounded-full bg-red-100 text-red-800">
+                                                        ✕ Ditolak
+                                                    </span>
+                                                @endif
+                                            </td>
+                                            <td class="px-4 py-3 text-center space-x-1 whitespace-nowrap">
+                                                <a href="{{ route('pelaporan-phk.show', $phk->pelaporan_phk_id) }}" class="px-3 py-1.5 bg-yellow-500 hover:bg-yellow-600 text-white font-bold rounded-lg text-xs transition inline-block">
+                                                    Verifikasi Berkas
+                                                </a>
+                                                @if($phk->status === 'terverifikasi')
+                                                    <a href="{{ route('pelaporan-phk.cetak', $phk->pelaporan_phk_id) }}" target="_blank" class="px-2.5 py-1.5 bg-green-50 text-green-700 hover:bg-green-100 font-bold rounded-lg text-xs transition inline-block">
+                                                        🖨️ Cetak
+                                                    </a>
+                                                @endif
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+
+                        @if (method_exists($pelaporanPhkList, 'links'))
+                            <div class="px-4 py-3 border-t border-gray-200">
+                                {{ $pelaporanPhkList->links() }}
+                            </div>
+                        @endif
+                    @else
+                        <div class="p-10 text-center text-gray-500">
+                            <p class="text-base font-semibold text-gray-800">Belum ada pelaporan PHK yang tercatat</p>
+                            <p class="text-xs text-gray-500 mt-1">Laporan PHK yang didaftarkan oleh perusahaan akan muncul di tab ini.</p>
+                        </div>
+                    @endif
+                @endif
             </div>
+
         </div>
-
-        <!-- JavaScript for actions and filtering -->
-        <script>
-            function updateStatus(jadwalId, newStatus) {
-                const statusText = {
-                    'dijadwalkan': 'Dijadwalkan',
-                    'berlangsung': 'Berlangsung',
-                    'selesai': 'Selesai',
-                    'ditunda': 'Ditunda',
-                    'dibatalkan': 'Dibatalkan'
-                };
-
-                if (confirm(`Apakah Anda yakin ingin mengubah status menjadi "${statusText[newStatus]}"?`)) {
-                    // Create form data
-                    const formData = new FormData();
-                    formData.append('status_jadwal', newStatus);
-                    formData.append('_token', document.querySelector('meta[name="csrf-token"]').getAttribute('content'));
-
-                    // Send AJAX request
-                    fetch(`/jadwal/${jadwalId}/update-status`, {
-                            method: 'POST',
-                            body: formData,
-                            headers: {
-                                'X-Requested-With': 'XMLHttpRequest'
-                            }
-                        })
-                        .then(response => response.json())
-                        .then(data => {
-                            if (data.success) {
-                                // Show success message
-                                alert(data.message);
-                                // Reload page to show updated status
-                                window.location.reload();
-                            } else {
-                                // Show error message
-                                alert(data.message || 'Terjadi kesalahan saat mengupdate status');
-                            }
-                        })
-                        .catch(error => {
-                            console.error('Error:', error);
-                            alert('Terjadi kesalahan saat mengupdate status');
-                        });
-                }
-            }
-        </script>
-    </x-app-layout>
-</body>
-
-</html>
+    </div>
+</x-app-layout>

@@ -9,6 +9,7 @@ use App\Models\Anjuran;
 use App\Models\Pengaduan;
 use App\Models\LaporanHasilMediasi;
 use App\Models\BukuRegisterPerselisihan;
+use App\Models\PelaporanPhk;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
@@ -219,6 +220,11 @@ class LaporanController extends Controller
             'tidak_sepakat' => $baseQuery->whereHas('dokumenHI.anjuran')->count(),
             'bulan_ini' => $baseQuery->whereMonth('updated_at', now()->month)->count(),
             'tahun_ini' => $baseQuery->whereYear('updated_at', now()->year)->count(),
+            // PHK stats
+            'total_phk' => PelaporanPhk::count(),
+            'phk_terverifikasi' => PelaporanPhk::where('status', 'terverifikasi')->count(),
+            'total_pekerja_phk' => PelaporanPhk::sum('total_pekerja'),
+            'total_kompensasi_phk' => PelaporanPhk::sum('total_kompensasi'),
         ];
     }
 

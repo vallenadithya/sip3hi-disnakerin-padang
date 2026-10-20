@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Models\Pelapor;
 use App\Models\Pengaduan;
 use App\Models\Jadwal;
+use App\Models\PelaporanPhk;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -204,16 +205,54 @@ class DashboardController extends Controller
             abort(403, 'Access denied');
         }
 
-        // Data khusus untuk mediator
+        // Data statistik terintegrasi untuk mediator (Perselisihan HI + Pelaporan PHK)
+        $totalPengaduan = Pengaduan::count();
+        $totalPhk = PelaporanPhk::count();
+
         $stats = [
-            'total_kasus_saya' => Pengaduan::count(),
-            'kasus_aktif' => Pengaduan::whereIn('status', ['pending', 'proses'])->count(),
-            'kasus_selesai' => Pengaduan::where('status', 'selesai')->count(),
+            'total_berkas_terpadu' => $totalPengaduan + $totalPhk,
+            // Perselisihan Hubungan Industrial
+            'total_pengaduan' => $totalPengaduan,
+            'pengaduan_pending' => Pengaduan::where('status', 'pending')->count(),
+            'pengaduan_proses' => Pengaduan::where('status', 'proses')->count(),
+            'pengaduan_selesai' => Pengaduan::where('status', 'selesai')->count(),
+            // Pelaporan PHK (PP 35/2021)
+            'total_phk' => $totalPhk,
+            'phk_menunggu' => PelaporanPhk::where('status', 'menunggu_verifikasi')->count(),
+            'phk_terverifikasi' => PelaporanPhk::where('status', 'terverifikasi')->count(),
+            'phk_perlu_revisi' => PelaporanPhk::where('status', 'perlu_revisi')->count(),
+            'total_pekerja_phk' => PelaporanPhk::sum('total_pekerja'),
+            'total_kompensasi_phk' => PelaporanPhk::sum('total_kompensasi'),
+            // Jadwal
             'jadwal_hari_ini' => Jadwal::whereDate('tanggal', today())->count(),
             'menunggu_konfirmasi' => Jadwal::menungguKonfirmasi()->count(),
+            // Butuh Tindakan Cepat (Pending Pengaduan + Menunggu Verifikasi PHK)
+            'total_butuh_tindakan' => Pengaduan::where('status', 'pending')->count() + PelaporanPhk::where('status', 'menunggu_verifikasi')->count(),
         ];
 
-        return view('dashboard.mediator', compact('user', 'stats'));
+        // Antrean Pelaporan PHK yang butuh verifikasi
+        $antreanPhk = PelaporanPhk::with('pekerja')
+            ->whereIn('status', ['menunggu_verifikasi', 'perlu_revisi'])
+            ->latest()
+            ->take(5)
+            ->get();
+
+        // Kasus Perselisihan aktif terbaru
+        $pengaduanAktif = Pengaduan::with(['pelapor', 'terlapor'])
+            ->whereIn('status', ['pending', 'proses'])
+            ->latest()
+            ->take(5)
+            ->get();
+
+        // Jadwal Mediasi terdekat
+        $jadwalMendatang = Jadwal::with(['pengaduan.pelapor', 'pengaduan.terlapor'])
+            ->where('status_jadwal', 'dijadwalkan')
+            ->whereDate('tanggal', '>=', today())
+            ->orderBy('tanggal', 'asc')
+            ->take(5)
+            ->get();
+
+        return view('dashboard.mediator', compact('user', 'stats', 'antreanPhk', 'pengaduanAktif', 'jadwalMendatang'));
     }
 
     public function kepalaDinas()

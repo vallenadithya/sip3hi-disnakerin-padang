@@ -189,6 +189,12 @@ class User extends Authenticatable
         return $this->load(['pelapor', 'terlapor', 'mediator', 'kepalaDinas']);
     }
 
+    // Role accessor for compatibility
+    public function getRoleAttribute()
+    {
+        return $this->active_role;
+    }
+
     // Role checker methods
     public function isPelapor()
     {
