@@ -8,19 +8,19 @@
                     </h2>
                     @if($pelaporan->status === 'terverifikasi')
                         <span class="px-3 py-1 text-xs font-bold rounded-full bg-green-100 text-green-800">
-                            ✓ Terverifikasi
+                            Terverifikasi
                         </span>
                     @elseif($pelaporan->status === 'menunggu_verifikasi')
                         <span class="px-3 py-1 text-xs font-bold rounded-full bg-yellow-100 text-yellow-800">
-                            ⏳ Menunggu Verifikasi
+                            Menunggu Verifikasi
                         </span>
                     @elseif($pelaporan->status === 'perlu_revisi')
                         <span class="px-3 py-1 text-xs font-bold rounded-full bg-orange-100 text-orange-800">
-                            ⚠️ Perlu Revisi
+                            Perlu Revisi
                         </span>
                     @else
                         <span class="px-3 py-1 text-xs font-bold rounded-full bg-red-100 text-red-800">
-                            ✕ Ditolak
+                            Ditolak
                         </span>
                     @endif
                 </div>
@@ -68,7 +68,7 @@
                             </p>
                         </div>
                         <button type="button" onclick="document.getElementById('modalVerifikasi').classList.remove('hidden')" class="px-5 py-2.5 bg-yellow-400 text-gray-900 rounded-lg text-sm font-bold hover:bg-yellow-300 shadow transition flex items-center gap-1.5">
-                            ⚙️ Proses Verifikasi Berkas
+                            Proses Verifikasi Berkas
                         </button>
                     </div>
 
@@ -95,9 +95,9 @@
                                 <div>
                                     <label class="block text-xs font-bold text-gray-700 mb-1">Keputusan Status Verifikasi <span class="text-red-500">*</span></label>
                                     <select name="status" required class="w-full text-sm rounded-lg border-gray-300 focus:ring-blue-500 focus:border-blue-500">
-                                        <option value="terverifikasi" {{ $pelaporan->status === 'terverifikasi' ? 'selected' : '' }}>✓ Terverifikasi (Terbitkan Nomor Bukti Lapor Resmi)</option>
-                                        <option value="perlu_revisi" {{ $pelaporan->status === 'perlu_revisi' ? 'selected' : '' }}>⚠️ Perlu Revisi (Berkas Kurang / Belum Sesuai)</option>
-                                        <option value="ditolak" {{ $pelaporan->status === 'ditolak' ? 'selected' : '' }}>✕ Ditolak (Tidak Memenuhi Syarat Administratif)</option>
+                                        <option value="terverifikasi" {{ $pelaporan->status === 'terverifikasi' ? 'selected' : '' }}>Terverifikasi (Terbitkan Nomor Bukti Lapor Resmi)</option>
+                                        <option value="perlu_revisi" {{ $pelaporan->status === 'perlu_revisi' ? 'selected' : '' }}>Perlu Revisi (Berkas Kurang / Belum Sesuai)</option>
+                                        <option value="ditolak" {{ $pelaporan->status === 'ditolak' ? 'selected' : '' }}>Ditolak (Tidak Memenuhi Syarat Administratif)</option>
                                     </select>
                                 </div>
                                 <div>
@@ -149,7 +149,7 @@
                     <p class="text-2xl font-black text-green-600 mt-1">Rp {{ number_format($pelaporan->total_kompensasi, 0, ',', '.') }}</p>
                     <p class="text-xs text-gray-500 mt-0.5">Total Pekerja: <strong class="text-gray-800">{{ $pelaporan->total_pekerja }} Orang</strong></p>
                     <div class="mt-4 pt-3 border-t border-gray-100 text-xs text-gray-500">
-                        Status Persetujuan Pekerja: <strong class="text-green-700">✓ Disetujui/Diterima</strong>
+                        Status Persetujuan Pekerja: <strong class="text-green-700">Disetujui / Diterima</strong>
                     </div>
                 </div>
             </div>
@@ -227,7 +227,7 @@
                         <div class="mt-4 pt-3 border-t">
                             @if($pelaporan->file_persetujuan_pekerja)
                                 <a href="{{ asset('storage/' . $pelaporan->file_persetujuan_pekerja) }}" target="_blank" class="inline-flex items-center text-xs font-bold text-blue-600 hover:text-blue-800">
-                                    📂 Buka / Unduh Berkas
+                                    Buka Berkas
                                 </a>
                             @else
                                 <span class="text-xs text-red-500 font-medium">Tidak ada berkas</span>
@@ -245,7 +245,7 @@
                         <div class="mt-4 pt-3 border-t">
                             @if($pelaporan->file_surat_pemberitahuan)
                                 <a href="{{ asset('storage/' . $pelaporan->file_surat_pemberitahuan) }}" target="_blank" class="inline-flex items-center text-xs font-bold text-blue-600 hover:text-blue-800">
-                                    📂 Buka / Unduh Berkas
+                                    Buka Berkas
                                 </a>
                             @else
                                 <span class="text-xs text-gray-400">Tidak dilampirkan</span>
@@ -263,7 +263,7 @@
                         <div class="mt-4 pt-3 border-t">
                             @if($pelaporan->file_bukti_kompensasi)
                                 <a href="{{ asset('storage/' . $pelaporan->file_bukti_kompensasi) }}" target="_blank" class="inline-flex items-center text-xs font-bold text-blue-600 hover:text-blue-800">
-                                    📂 Buka / Unduh Berkas
+                                    Buka Berkas
                                 </a>
                             @else
                                 <span class="text-xs text-gray-400">Tidak dilampirkan</span>

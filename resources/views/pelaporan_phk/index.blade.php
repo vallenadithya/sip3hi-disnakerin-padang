@@ -58,36 +58,28 @@
                         <p class="text-xs font-semibold text-gray-500 uppercase">Total Laporan</p>
                         <p class="text-2xl font-bold text-gray-800 mt-1">{{ $stats['total'] }}</p>
                     </div>
-                    <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center font-bold text-lg">
-                        📄
-                    </div>
+                    <div class="p-3 bg-blue-100 rounded-lg"><svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 20 20"><path d="M2 6a2 2 0 012-2h5l2 2h5a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"></path></svg></div>
                 </div>
                 <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm flex items-center justify-between">
                     <div>
                         <p class="text-xs font-semibold text-yellow-600 uppercase">Menunggu Verifikasi</p>
                         <p class="text-2xl font-bold text-yellow-600 mt-1">{{ $stats['menunggu'] }}</p>
                     </div>
-                    <div class="w-12 h-12 bg-yellow-50 text-yellow-600 rounded-xl flex items-center justify-center font-bold text-lg">
-                        ⏳
-                    </div>
+                    <div class="p-3 bg-yellow-100 rounded-lg"><svg class="w-6 h-6 text-yellow-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"></path></svg></div>
                 </div>
                 <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm flex items-center justify-between">
                     <div>
                         <p class="text-xs font-semibold text-green-600 uppercase">Terverifikasi</p>
                         <p class="text-2xl font-bold text-green-600 mt-1">{{ $stats['terverifikasi'] }}</p>
                     </div>
-                    <div class="w-12 h-12 bg-green-50 text-green-600 rounded-xl flex items-center justify-center font-bold text-lg">
-                        ✅
-                    </div>
+                    <div class="p-3 bg-green-100 rounded-lg"><svg class="w-6 h-6 text-green-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg></div>
                 </div>
                 <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm flex items-center justify-between">
                     <div>
                         <p class="text-xs font-semibold text-purple-600 uppercase">Total Pekerja Ter-PHK</p>
                         <p class="text-2xl font-bold text-purple-600 mt-1">{{ $stats['total_pekerja'] }} Orang</p>
                     </div>
-                    <div class="w-12 h-12 bg-purple-50 text-purple-600 rounded-xl flex items-center justify-center font-bold text-lg">
-                        👥
-                    </div>
+                    <div class="p-3 bg-purple-100 rounded-lg"><svg class="w-6 h-6 text-purple-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path></svg></div>
                 </div>
             </div>
 
@@ -177,19 +169,19 @@
                                     <td class="px-6 py-4 whitespace-nowrap text-center">
                                         @if($item->status === 'terverifikasi')
                                             <span class="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                                ✓ Terverifikasi
+                                                Terverifikasi
                                             </span>
                                         @elseif($item->status === 'menunggu_verifikasi')
                                             <span class="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800 animate-pulse">
-                                                ⏳ Menunggu Verifikasi
+                                                Menunggu Verifikasi
                                             </span>
                                         @elseif($item->status === 'perlu_revisi')
                                             <span class="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-orange-100 text-orange-800">
-                                                ⚠️ Perlu Revisi
+                                                Perlu Revisi
                                             </span>
                                         @else
                                             <span class="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
-                                                ✕ Ditolak
+                                                Ditolak
                                             </span>
                                         @endif
                                     </td>
@@ -199,7 +191,7 @@
                                         </a>
                                         @if($item->status === 'terverifikasi')
                                             <a href="{{ route('pelaporan-phk.cetak', $item->pelaporan_phk_id) }}" target="_blank" class="text-green-600 hover:text-green-900 font-semibold text-xs bg-green-50 hover:bg-green-100 px-3 py-1.5 rounded-lg transition inline-block">
-                                                🖨️ Bukti Lapor
+                                                Bukti Lapor
                                             </a>
                                         @endif
                                     </td>

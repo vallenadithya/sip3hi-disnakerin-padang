@@ -21,9 +21,7 @@
             @if (isset($errors) && $errors->any())
                 <div class="mb-6 bg-red-50 border-l-4 border-red-500 p-4 rounded-r-lg">
                     <div class="flex">
-                        <div class="flex-shrink-0 text-red-500">
-                            ✕
-                        </div>
+                        <div class="flex-shrink-0 text-red-500"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path></svg></div>
                         <div class="ml-3">
                             <h3 class="text-sm font-semibold text-red-800">Mohon lengkapi data berikut:</h3>
                             <ul class="mt-2 list-disc list-inside text-xs text-red-700 space-y-1">
@@ -39,7 +37,7 @@
             <!-- Info Box Regulasi -->
             <div class="mb-6 bg-amber-50 border-l-4 border-amber-500 p-4 rounded-r-lg shadow-sm">
                 <div class="flex items-start">
-                    <div class="text-amber-600 text-lg mr-3">⚠️</div>
+                    <div class="flex-shrink-0 text-amber-600 mr-3"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92z" clip-rule="evenodd"></path></svg></div>
                     <div class="text-xs text-amber-800 leading-relaxed">
                         <p class="font-bold text-amber-900 text-sm">Persyaratan Administratif Pelaporan PHK (PP 35/2021):</p>
                         <p class="mt-1">
@@ -163,7 +161,7 @@
                                     <td class="p-2"><input type="number" name="pekerja[0][uang_penghargaan]" value="0" min="0" step="1000" class="uang-input w-28 text-xs rounded border-gray-300 text-right"></td>
                                     <td class="p-2"><input type="number" name="pekerja[0][uang_penggantian_hak]" value="0" min="0" step="1000" class="uang-input w-28 text-xs rounded border-gray-300 text-right"></td>
                                     <td class="p-2 text-center">
-                                        <button type="button" class="btn-remove-row text-red-500 hover:text-red-700 text-xs font-bold disabled:opacity-30" disabled>✕</button>
+                                        <button type="button" class="btn-remove-row text-red-500 hover:text-red-700 text-xs font-bold disabled:opacity-30" disabled>Hapus</button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -280,7 +278,7 @@
                 <td class="p-2"><input type="number" name="pekerja[${rowIndex}][uang_penghargaan]" value="0" min="0" step="1000" class="uang-input w-28 text-xs rounded border-gray-300 text-right"></td>
                 <td class="p-2"><input type="number" name="pekerja[${rowIndex}][uang_penggantian_hak]" value="0" min="0" step="1000" class="uang-input w-28 text-xs rounded border-gray-300 text-right"></td>
                 <td class="p-2 text-center">
-                    <button type="button" class="btn-remove-row text-red-500 hover:text-red-700 text-xs font-bold">✕</button>
+                    <button type="button" class="btn-remove-row text-red-500 hover:text-red-700 text-xs font-bold">Hapus</button>
                 </td>
             `;
             tbody.appendChild(tr);

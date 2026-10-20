@@ -31,7 +31,7 @@
         </a>
         <div class="flex gap-2">
             <button onclick="window.print()" class="px-5 py-2 bg-blue-600 text-white rounded-lg text-sm font-bold shadow hover:bg-blue-700 flex items-center gap-2">
-                🖨️ Cetak / Simpan PDF
+                Cetak / Simpan PDF
             </button>
         </div>
     </div>
