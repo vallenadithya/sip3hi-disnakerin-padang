@@ -148,7 +148,7 @@
                                     <div
                                         class="relative bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/30 animate-float">
                                         <img class="w-64 h-auto object-contain drop-shadow-2xl"
-                                            src="/img/logo_bungo.png" alt="Logo Kabupaten Bungo">
+                                            src="/img/logo_padang.svg" alt="Logo Kota Padang">
                                     </div>
                                 </div>
                             </div>

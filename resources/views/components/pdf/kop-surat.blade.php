@@ -3,13 +3,13 @@
     <table class="kop-table">
         <tr>
             <td class="logo-cell">
-                <img src="{{ base_path('public/img/logo_bungo.png') }}" alt="Logo Kabupaten Bungo">
+                <img src="{{ base_path('public/img/logo_padang.svg') }}" alt="Logo Kota Padang">
             </td>
             <td class="text-cell">
-                <div class="nama-dinas">DINAS TENAGA KERJA DAN TRANSMIGRASI KABUPATEN BUNGO</div>
-                <div class="alamat-dinas">Jl. Damar, No. 831, Kel. Pasir Putih, Kec. Rimbo Tengah Kabupaten</div>
-                <div class="alamat-dinas">Bungo, Jambi 37211</div>
-                <div class="kontak-dinas">Telepon: (0747) 21013 | Email: nakertrans@bungokab.go.id</div>
+                <div class="nama-dinas">DINAS TENAGA KERJA DAN PERINDUSTRIAN KOTA PADANG</div>
+                <div class="alamat-dinas">Jl. Rasuna Said No. 71, Rimbo Kaluang, Kec. Padang Barat</div>
+                <div class="alamat-dinas">Kota Padang, Sumatera Barat 25111</div>
+                <div class="kontak-dinas">Telepon: (0751) 7052345 | Email: disnakerin@padang.go.id</div>
             </td>
         </tr>
     </table>

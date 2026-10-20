@@ -51,16 +51,15 @@
                     <div class="flex items-start justify-between mb-8">
                         <div class="flex-1">
                             <h2 class="text-2xl font-bold text-gray-800 mb-2">Masuk Akun</h2>
-                            <p class="text-gray-600 leading-relaxed">
-                                Sistem Informasi Pengaduan dan<br>
-                                Penyelesaian Hubungan Industrial<br>
-                                Kabupaten Bungo
+                            <p class="text-gray-600 leading-relaxed text-sm">
+                                Sistem Informasi Penyelesaian Hubungan Industrial & Pelaporan PHK<br>
+                                Dinas Tenaga Kerja dan Perindustrian Kota Padang
                             </p>
                         </div>
                         <div class="ml-4">
                             <div
-                                class="w-16 h-16 bg-gradient-to-r from-primary to-accent rounded-xl flex items-center justify-center p-2 shadow-lg">
-                                <img src="/img/logo_bungo.png" alt="Logo Kabupaten Bungo"
+                                class="w-16 h-16 bg-white border border-gray-200 rounded-xl flex items-center justify-center p-2 shadow-sm">
+                                <img src="/img/logo_padang.svg" alt="Logo Kota Padang"
                                     class="w-full h-full object-contain">
                             </div>
                         </div>

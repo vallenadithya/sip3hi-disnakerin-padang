@@ -42,7 +42,7 @@
         <!-- KOP SURAT RESMI PEMKOT PADANG -->
         <div class="flex items-center justify-between pb-3 header-line mb-6">
             <div class="w-24 text-center">
-                <img src="/img/logo_bungo.png" alt="Logo Pemkot Padang" class="w-20 h-20 mx-auto object-contain">
+                <img src="/img/logo_padang.svg" alt="Logo Pemkot Padang" class="w-20 h-20 mx-auto object-contain">
             </div>
             <div class="flex-1 text-center px-4">
                 <h3 class="text-lg font-bold uppercase tracking-wider">Pemerintah Kota Padang</h3>

@@ -42,13 +42,13 @@
             <div class="text-left mb-8">
                 <div class="flex justify-center mb-4">
                     <div
-                        class="w-20 h-20 bg-gradient-to-r from-primary to-accent rounded-2xl flex items-center justify-center p-3 shadow-lg">
-                        <img src="/img/logo_bungo.png" alt="Logo Kabupaten Bungo" class="w-full h-full object-contain">
+                        class="w-20 h-20 bg-white border border-gray-200 rounded-2xl flex items-center justify-center p-2 shadow-sm">
+                        <img src="/img/logo_padang.svg" alt="Logo Kota Padang" class="w-full h-full object-contain">
                     </div>
                 </div>
                 <h1 class="text-2xl font-bold mb-2 text-gray-800">Registrasi akun SIPPPHI</h1>
                 <h3 class="text-lg font-semibold mb-3 text-gray-600">
-                    Sistem Informasi Pengaduan dan Penyelesaian Hubungan Industrial Kab. Bungo
+                    Sistem Informasi Penyelesaian Hubungan Industrial & Pelaporan PHK Kota Padang
                 </h3>
                 <div class="text-sm text-gray-600 mb-4">
                     <p class="text-gray-600 leading-relaxed">
