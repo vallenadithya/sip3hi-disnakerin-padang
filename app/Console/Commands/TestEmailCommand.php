@@ -43,9 +43,9 @@ class TestEmailCommand extends Command
             $this->info('Found Kepala Dinas: ' . $kepalaDinas->email);
 
             // Test email sederhana
-            Mail::raw('Test email dari sistem SIPPPHI - ' . now(), function ($message) use ($kepalaDinas) {
+            Mail::raw('Test email dari sistem SIP3HI - ' . now(), function ($message) use ($kepalaDinas) {
                 $message->to($kepalaDinas->email)
-                    ->subject('Test Email - SIPPPHI - ' . now()->format('Y-m-d H:i:s'));
+                    ->subject('Test Email - SIP3HI - ' . now()->format('Y-m-d H:i:s'));
             });
 
             $this->info('Email sent successfully to: ' . $kepalaDinas->email);

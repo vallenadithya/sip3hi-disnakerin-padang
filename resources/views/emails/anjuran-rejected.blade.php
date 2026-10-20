@@ -177,7 +177,7 @@
         </div>
 
         <div class="footer">
-            <p>Email ini dikirim otomatis oleh sistem SIPPPHI Kabupaten Bungo</p>
+            <p>Email ini dikirim otomatis oleh sistem SIP3HI Kota Padang</p>
             <p>Jika ada pertanyaan, silakan hubungi administrator sistem</p>
         </div>
     </div>

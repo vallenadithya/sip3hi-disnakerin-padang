@@ -112,7 +112,7 @@ return [
 
     'from' => [
         'address' => env('MAIL_FROM_ADDRESS', 'noreply@sippphi.test'),
-        'name' => env('MAIL_FROM_NAME', 'SIPPPHI - Kabupaten Bungo'),
+        'name' => env('MAIL_FROM_NAME', 'SIP3HI Disnakerin Kota Padang'),
     ],
 
 ];

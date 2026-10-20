@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrasi SIPPPHI</title>
+    <title>Registrasi SIP3HI - Disnakerin Kota Padang</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -46,7 +46,7 @@
                         <img src="/img/logo_padang.svg" alt="Logo Kota Padang" class="w-full h-full object-contain">
                     </div>
                 </div>
-                <h1 class="text-2xl font-bold mb-2 text-gray-800">Registrasi akun SIPPPHI</h1>
+                <h1 class="text-2xl font-bold mb-2 text-gray-800">Registrasi akun SIP3HI</h1>
                 <h3 class="text-lg font-semibold mb-3 text-gray-600">
                     Sistem Informasi Penyelesaian Hubungan Industrial & Pelaporan PHK Kota Padang
                 </h3>

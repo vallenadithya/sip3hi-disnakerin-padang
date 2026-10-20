@@ -38,7 +38,7 @@ class TerlaporPengaduanNotification extends Notification implements ShouldQueue
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-            ->subject('Notifikasi Pengaduan Baru - SIPPPHI Kab. Bungo')
+            ->subject('Notifikasi Pengaduan Baru - SIP3HI Kota Padang')
             ->view('emails.pengaduan-baru-terlapor', [
                 'pengaduan' => $this->pengaduan
             ]);

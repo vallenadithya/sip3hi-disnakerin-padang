@@ -371,7 +371,7 @@
 
                             <div class="text-gray-600 text-sm italic">
                                 <p>Dokumen ini dikeluarkan oleh Mediator Hubungan Industrial dan disetujui oleh
-                                    Kepala Dinas Tenaga Kerja dan Transmigrasi Kabupaten Bungo.</p>
+                                    Kepala Dinas Tenaga Kerja dan Perindustrian Kota Padang.</p>
                             </div>
                         </div>
                     </div>

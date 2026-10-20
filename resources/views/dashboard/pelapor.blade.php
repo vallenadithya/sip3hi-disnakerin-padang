@@ -46,7 +46,7 @@
 
                 <div class="relative z-10 text-center">
                     <h1 class="text-4xl font-bold mb-4">Selamat Datang di Sistem Informasi Pengaduan dan Penyelesaian
-                        Hubungan Industrial Kab. Bungo</h1>
+                        Hubungan Industrial Kota Padang</h1>
                     <p class="text-lg opacity-90 mb-8 max-w-2xl mx-auto">
                         Platform digital untuk penyelesaian perselisihan hubungan industrial secara efektif dan
                         transparan
@@ -478,11 +478,11 @@
                                 <div class="space-y-2 text-sm">
                                     <div class="flex items-center gap-2 text-blue-700">
                                         <span>📧</span>
-                                        <span>Email: nakertrans@bungokab.go.id </span>
+                                        <span>Email: disnakerin@padang.go.id </span>
                                     </div>
                                     <div class="flex items-center gap-2 text-blue-700">
                                         <span>📱</span>
-                                        <span>Telepon: (0747) 21013</span>
+                                        <span>Telepon: (0751) 7052345</span>
                                     </div>
                                     <div class="flex items-center gap-2 text-blue-700">
                                         <span>🕒</span>
@@ -813,11 +813,11 @@
                                 </div>
                                 <div class="flex-1">
                                     <div class="text-sm font-medium text-gray-800">Hubungi Call Center</div>
-                                    <div class="text-xs text-gray-600">(0747) 21013</div>
+                                    <div class="text-xs text-gray-600">(0751) 7052345</div>
                                 </div>
                             </a>
 
-                            <a href="mailto:mediasi@disnaker.bungo.go.id"
+                            <a href="mailto:disnakerin@padang.go.id"
                                 class="flex items-center gap-4 p-4 border border-gray-200 rounded-xl hover:bg-blue-50 hover:border-primary transform hover:translate-x-1 transition-all duration-300">
                                 <div
                                     class="w-10 h-10 bg-gradient-to-br from-primary to-primary-light rounded-lg flex items-center justify-center text-white">
@@ -825,7 +825,7 @@
                                 </div>
                                 <div class="flex-1">
                                     <div class="text-sm font-medium text-gray-800">Email Support</div>
-                                    <div class="text-xs text-gray-600">nakertrans@bungokab.go.id</div>
+                                    <div class="text-xs text-gray-600">disnakerin@padang.go.id</div>
                                 </div>
                             </a>
                         </div>

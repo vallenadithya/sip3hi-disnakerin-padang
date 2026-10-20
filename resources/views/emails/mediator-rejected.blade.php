@@ -116,11 +116,11 @@
 <body>
     <div class="container">
         <div class="header">
-            <div class="logo">SIPPPHI</div>
+            <div class="logo">SIP3HI</div>
             <div class="rejection-icon">❌</div>
             <h1 style="color: #dc3545; margin: 0;">Registrasi Mediator Ditolak</h1>
             <p style="color: #6c757d; margin: 10px 0 0 0;">Sistem Informasi Pengaduan dan Penyelesaian Hubungan
-                Industrial Kab. Bungo</p>
+                Industrial Kota Padang</p>
         </div>
 
         <p>Mohon maaf <strong>{{ $mediator->nama_mediator }}</strong>,</p>
@@ -166,7 +166,7 @@
             ulang.</p>
 
         <div class="footer">
-            <p>Email ini dikirim secara otomatis oleh sistem SIPPPHI.</p>
+            <p>Email ini dikirim secara otomatis oleh sistem SIP3HI.</p>
             <p>Jika Anda memerlukan bantuan, silakan hubungi admin sistem.</p>
         </div>
     </div>

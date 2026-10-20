@@ -210,7 +210,7 @@ class MediatorRegistrationController extends Controller
                         'actionUrl' => route('kepala-dinas.mediator.approval.index')
                     ], function ($message) use ($kepalaDinas, $mediator) {
                         $message->to($kepalaDinas->email)
-                            ->subject('Mediator Baru Mendaftar - Perlu Approval - SIPPPHI');
+                            ->subject('Mediator Baru Mendaftar - Perlu Approval - SIP3HI');
                     });
 
                     Log::info('Email sent successfully', [

@@ -124,17 +124,17 @@
 <body>
     <div class="container">
         <div class="header">
-            <div class="logo">SIPPPHI</div>
+            <div class="logo">SIP3HI</div>
             <div class="success-icon">✅</div>
             <h1 style="color: #10B981; margin: 0;">Akun Mediator Disetujui!</h1>
             <p style="color: #6c757d; margin: 10px 0 0 0;">Sistem Informasi Pengaduan dan Penyelesaian Hubungan
-                Industrial Kab. Bungo</p>
+                Industrial Kota Padang</p>
         </div>
 
         <p>Selamat <strong>{{ $notifiable->name }}</strong>!</p>
 
         <p>Registrasi mediator Anda telah <strong>disetujui</strong> oleh Kepala Dinas. Akun Anda sekarang sudah aktif
-            dan dapat digunakan untuk mengakses sistem SIPPPHI.</p>
+            dan dapat digunakan untuk mengakses sistem SIP3HI.</p>
 
         <div class="credentials-box">
             <h3>🔐 Kredensial Login Anda</h3>
@@ -166,11 +166,11 @@
             <li><strong>Disetujui pada:</strong> {{ $mediator->approved_at->format('d F Y, H:i') }}</li>
         </ul>
 
-        <p>Terima kasih telah bergabung dengan sistem SIPPPHI. Jika Anda mengalami masalah atau memerlukan bantuan,
+        <p>Terima kasih telah bergabung dengan sistem SIP3HI. Jika Anda mengalami masalah atau memerlukan bantuan,
             silakan hubungi admin sistem.</p>
 
         <div class="footer">
-            <p>Email ini dikirim secara otomatis oleh sistem SIPPPHI.</p>
+            <p>Email ini dikirim secara otomatis oleh sistem SIP3HI.</p>
             <p>Jangan balas email ini karena tidak akan diproses.</p>
         </div>
     </div>

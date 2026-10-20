@@ -108,7 +108,7 @@
                         {{ __('Manajemen Akun') }}
                     </h2>
                     <p class="text-gray-600 text-sm mt-1">Kelola akun pelapor dan terlapor untuk Sistem Informasi
-                        Pengaduan dan Penyelesaian Hubungan Industrial Kab. Bungo
+                        Pengaduan dan Penyelesaian Hubungan Industrial Kota Padang
                     </p>
                 </div>
 

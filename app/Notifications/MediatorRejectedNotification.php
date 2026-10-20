@@ -39,7 +39,7 @@ class MediatorRejectedNotification extends Notification
     {
         try {
             $mailMessage = (new MailMessage)
-                ->subject('Registrasi Mediator Ditolak - SIPPPHI')
+                ->subject('Registrasi Mediator Ditolak - SIP3HI')
                 ->greeting('Mohon Maaf')
                 ->line('Registrasi mediator Anda telah ditolak oleh Kepala Dinas.')
                 ->line('**Alasan Penolakan:**')
@@ -62,7 +62,7 @@ class MediatorRejectedNotification extends Notification
 
             // Fallback email
             return (new MailMessage)
-                ->subject('Registrasi Mediator Ditolak - SIPPPHI')
+                ->subject('Registrasi Mediator Ditolak - SIP3HI')
                 ->greeting('Mohon Maaf')
                 ->line('Registrasi mediator Anda telah ditolak.')
                 ->line('Silakan registrasi ulang dengan dokumen yang benar.')

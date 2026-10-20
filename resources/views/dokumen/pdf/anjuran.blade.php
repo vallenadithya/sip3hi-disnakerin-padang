@@ -184,7 +184,7 @@
 
         <div class="content">
             <div class="document-info">
-                <p style="text-align: right;">Muara Bungo,
+                <p style="text-align: right;">Padang,
                     {{ \Carbon\Carbon::parse($anjuran->created_at)->translatedFormat('d F Y') }}</p>
                 <p>Nomor :
                     {{ $anjuran->nomor_anjuran ?? 'A-' . date('Y') . '-' . str_pad($anjuran->id ?? '001', 3, '0', STR_PAD_LEFT) }}
@@ -262,7 +262,7 @@
         <!-- Footer menggunakan komponen -->
         @include('components.pdf.footer', [
             'footerText' =>
-                'Anjuran ini dikeluarkan oleh Mediator Hubungan Industrial dan disetujui oleh Kepala Dinas Tenaga Kerja dan Transmigrasi Kabupaten Bungo pada',
+                'Anjuran ini dikeluarkan oleh Mediator Hubungan Industrial dan disetujui oleh Kepala Dinas Tenaga Kerja dan Perindustrian Kota Padang pada',
             'approvalDate' =>
                 $anjuran->status_approval === 'published'
                     ? \Carbon\Carbon::parse($anjuran->published_at)->translatedFormat('d F Y')

@@ -38,7 +38,7 @@
                     <h3 class="text-2xl font-bold mb-2">Selamat Datang, {{ $user->email }}
                     </h3>
                     <p class="text-purple-100">Dashboard Kepala Dinas - Sistem Informasi Pengaduan dan Penyelesaian
-                        Perselisihan Hubungan Industrial Kab. Bungo</p>
+                        Perselisihan Hubungan Industrial Kota Padang</p>
                     <div class="mt-4">
                         <span class="bg-purple-400 px-3 py-1 rounded-full text-sm font-medium text-purple-900">
                             Role: {{ ucfirst(str_replace('_', ' ', $user->active_role)) }}

@@ -136,16 +136,16 @@
 <body>
     <div class="container">
         <div class="header">
-            <div class="logo">SIPPPHI</div>
+            <div class="logo">SIP3HI</div>
             <div class="notification-icon">🔔</div>
             <h1 style="color: #ffc107; margin: 0;">Mediator Baru Mendaftar!</h1>
             <p style="color: #6c757d; margin: 10px 0 0 0;">Sistem Informasi Pengaduan dan Penyelesaian Hubungan
-                Industrial Kab. Bungo</p>
+                Industrial Kota Padang</p>
         </div>
 
         <p>Kepala Dinas yang terhormat,</p>
 
-        <p>Seorang mediator baru telah mendaftar ke sistem SIPPPHI dan <strong>memerlukan persetujuan</strong> dari Anda
+        <p>Seorang mediator baru telah mendaftar ke sistem SIP3HI dan <strong>memerlukan persetujuan</strong> dari Anda
             untuk mengaktifkan akunnya.</p>
 
         <div class="mediator-info">
@@ -193,10 +193,10 @@
             <a href="{{ $actionUrl }}" class="btn">🔍 Review Registrasi</a>
         </div>
 
-        <p>Terima kasih atas perhatian dan kerjasama Anda dalam menjaga kualitas mediator di sistem SIPPPHI.</p>
+        <p>Terima kasih atas perhatian dan kerjasama Anda dalam menjaga kualitas mediator di sistem SIP3HI.</p>
 
         <div class="footer">
-            <p>Email ini dikirim secara otomatis oleh sistem SIPPPHI.</p>
+            <p>Email ini dikirim secara otomatis oleh sistem SIP3HI.</p>
             <p>Jangan balas email ini karena tidak akan diproses.</p>
         </div>
     </div>

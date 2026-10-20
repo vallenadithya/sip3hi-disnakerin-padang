@@ -160,7 +160,7 @@ class MediatorApprovalController extends Controller
                     'registerUrl' => route('mediator.register')
                 ], function ($message) use ($mediator) {
                     $message->to($mediator->user->email)
-                        ->subject('Registrasi Mediator Ditolak - SIPPPHI');
+                        ->subject('Registrasi Mediator Ditolak - SIP3HI');
                 });
 
                 Log::info('Rejection email sent successfully', [

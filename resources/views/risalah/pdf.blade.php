@@ -451,7 +451,7 @@
             'footerText' =>
                 'Risalah ' .
                 ucfirst($risalah->jenis_risalah) .
-                ' ini dikeluarkan oleh Mediator Hubungan Industrial Dinas Tenaga Kerja dan Transmigrasi Kabupaten Bungo',
+                ' ini dikeluarkan oleh Mediator Hubungan Industrial Dinas Tenaga Kerja dan Perindustrian Kota Padang',
             'approvalDate' => \Carbon\Carbon::parse($risalah->created_at)->translatedFormat('d F Y'),
             'approvalTime' => \Carbon\Carbon::parse($risalah->created_at)->format('H:i'),
         ])

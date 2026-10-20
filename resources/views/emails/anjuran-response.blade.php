@@ -275,11 +275,11 @@
         </div>
 
         <div class="footer">
-            <p><strong>SIPPPHI - Sistem Informasi Pengelolaan Perselisihan Hubungan Industrial</strong></p>
-            <p>Dinas Tenaga Kerja dan Transmigrasi</p>
+            <p><strong>SIP3HI - Sistem Informasi Pengelolaan Perselisihan Hubungan Industrial</strong></p>
+            <p>Dinas Tenaga Kerja dan Perindustrian</p>
             <p>Email ini dikirim secara otomatis. Mohon tidak membalas email ini.</p>
             <p style="margin-top: 15px; font-size: 12px; color: #999;">
-                © {{ date('Y') }} SIPPPHI. All rights reserved.
+                © {{ date('Y') }} SIP3HI. All rights reserved.
             </p>
         </div>
     </div>

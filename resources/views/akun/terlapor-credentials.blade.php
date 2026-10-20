@@ -140,12 +140,12 @@
             <hr style="border: none; border-top: 1px solid #ddd; margin: 30px 0;">
 
             <p style="margin-bottom: 0;"><strong>Tim Mediator</strong><br>
-                Sistem Informasi Pengaduan dan Penyelesaian Hubungan Industrial Kab. Bungo</p>
+                Sistem Informasi Pengaduan dan Penyelesaian Hubungan Industrial Kota Padang</p>
         </div>
 
         <div class="footer">
             <p>Email ini dikirim secara otomatis oleh sistem. Mohon tidak membalas email ini.</p>
-            <p>© {{ date('Y') }} Sistem Informasi Pengaduan dan Penyelesaian Hubungan Industrial Kabupaten Bungo</p>
+            <p>© {{ date('Y') }} Sistem Informasi Pengaduan dan Penyelesaian Hubungan Industrial Kota Padang</p>
         </div>
     </div>
 </body>

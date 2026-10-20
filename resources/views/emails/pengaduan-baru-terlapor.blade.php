@@ -124,7 +124,7 @@
     <div class="container">
         <div class="header">
             <h1>Notifikasi Pengaduan Baru</h1>
-            <p style="margin: 5px 0 0 0;">Sistem Informasi Pengaduan dan Penyelesaian Hubungan Industrial Kab. Bungo</p>
+            <p style="margin: 5px 0 0 0;">Sistem Informasi Pengaduan dan Penyelesaian Hubungan Industrial Kota Padang</p>
         </div>
 
         {{-- Greeting --}}
@@ -187,8 +187,8 @@
 
         <div class="footer">
             <p>Email ini dikirim secara otomatis oleh sistem. Mohon tidak membalas email ini.</p>
-            <p>Dinas Tenaga Kerja dan Transmigrasi Kabupaten Bungo<br>
-                Telp: (0747) 21013 | Email: disnakertrans@bungokab.go.id</p>
+            <p>Dinas Tenaga Kerja dan Perindustrian Kota Padang<br>
+                Telp: (0751) 7052345 | Email: disdisnakerin@padang.go.id</p>
         </div>
     </div>
 </body>

@@ -1,6 +1,6 @@
 <!-- Footer Component -->
 <div class="footer" id="footer">
-    {{ $footerText ?? 'Dokumen ini dikeluarkan secara resmi oleh Dinas Tenaga Kerja dan Transmigrasi Kabupaten Bungo.' }}
+    {{ $footerText ?? 'Dokumen ini dikeluarkan secara resmi oleh Dinas Tenaga Kerja dan Perindustrian Kota Padang.' }}
     @if (isset($approvalDate))
         pada {{ $approvalDate }},
         {{ $approvalTime ?? \Carbon\Carbon::now()->format('H:i') }} WIB.

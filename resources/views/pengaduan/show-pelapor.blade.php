@@ -640,7 +640,7 @@
                                 <div class="space-y-3 text-sm">
                                     <div class="flex items-center gap-2 text-gray-700">
                                         <span>📧</span>
-                                        <span>Email: mediasi@disnaker.bungo.go.id</span>
+                                        <span>Email: disnakerin@padang.go.id</span>
                                     </div>
                                     <div class="flex items-center gap-2 text-gray-700">
                                         <span>📱</span>

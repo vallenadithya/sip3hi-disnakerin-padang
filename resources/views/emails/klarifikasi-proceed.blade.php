@@ -205,7 +205,7 @@
 
         <!-- Footer -->
         <div class="footer">
-            <p>Email ini dikirim secara otomatis oleh sistem SIPPPHI.</p>
+            <p>Email ini dikirim secara otomatis oleh sistem SIP3HI.</p>
             <p>Jika Anda memiliki pertanyaan, silakan hubungi administrator sistem.</p>
         </div>
     </div>

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Aplikasi Laravel dengan Tailwind CSS">
 
-    <title>Selamat Datang di SIPPPHI</title>
+    <title>Selamat Datang di SIP3HI - Disnakerin Kota Padang</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -167,10 +167,10 @@
                                         d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a.75.75 0 000 1.5v3a.75.75 0 001.5 0v-3A.75.75 0 009 9z"
                                         clip-rule="evenodd" />
                                 </svg>
-                                Tentang Sistem SIPPPHI
+                                Tentang Sistem SIP3HI
                             </div>
                             <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-8 leading-tight">
-                                Platform Digital untuk Penyelesaian Hubungan Industrial
+                                Platform Digital Penyelesaian Hubungan Industrial & Pelaporan PHK
                             </h2>
                             <div class="max-w-4xl mx-auto">
                                 <p class="text-xl text-gray-600 leading-relaxed">
@@ -427,7 +427,7 @@
         <footer class="bg-white border-t border-gray-200 py-8">
             <div class="max-w-7xl mx-auto px-4 text-center">
                 <p class="text-gray-600">
-                    &copy; {{ date('Y') }} <span class="font-semibold">Dinas Tenaga Kerja dan Perindustrian
+                    &copy; {{ date('Y') }} <span class="font-semibold">SIP3HI — Dinas Tenaga Kerja dan Perindustrian
                         Kota Padang</span>. All rights reserved.
                 </p>
             </div>

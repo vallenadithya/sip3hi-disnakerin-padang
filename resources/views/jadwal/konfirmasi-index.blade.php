@@ -518,7 +518,7 @@
                         </div>
                         <div>
                             <p class="font-medium mb-2">📞 Butuh Bantuan?</p>
-                            <p>Hubungi: (0747) 21013 atau email: nakertrans@bungokab.go.id</p>
+                            <p>Hubungi: (0751) 7052345 atau email: disnakerin@padang.go.id</p>
                         </div>
                     </div>
                 </div>

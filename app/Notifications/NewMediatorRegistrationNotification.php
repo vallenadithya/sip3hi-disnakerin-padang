@@ -41,9 +41,9 @@ class NewMediatorRegistrationNotification extends Notification
             $actionUrl = route('kepala-dinas.mediator.approval.index');
 
             return (new MailMessage)
-                ->subject('Mediator Baru Mendaftar - Perlu Approval - SIPPPHI')
+                ->subject('Mediator Baru Mendaftar - Perlu Approval - SIP3HI')
                 ->greeting('Ada Mediator Baru yang Mendaftar!')
-                ->line('Seorang mediator baru telah mendaftar ke sistem SIPPPHI dan memerlukan persetujuan Anda.')
+                ->line('Seorang mediator baru telah mendaftar ke sistem SIP3HI dan memerlukan persetujuan Anda.')
                 ->line('**Detail Mediator:**')
                 ->line("**Nama:** {$this->mediator->nama_mediator}")
                 ->line("**NIP:** {$this->mediator->nip}")
@@ -67,9 +67,9 @@ class NewMediatorRegistrationNotification extends Notification
 
             // Fallback email
             return (new MailMessage)
-                ->subject('Mediator Baru Mendaftar - Perlu Approval - SIPPPHI')
+                ->subject('Mediator Baru Mendaftar - Perlu Approval - SIP3HI')
                 ->greeting('Ada Mediator Baru yang Mendaftar!')
-                ->line('Seorang mediator baru telah mendaftar ke sistem SIPPPHI.')
+                ->line('Seorang mediator baru telah mendaftar ke sistem SIP3HI.')
                 ->line('Silakan login ke sistem untuk melihat detail lebih lanjut.')
                 ->action('Login ke Sistem', route('login'));
         }

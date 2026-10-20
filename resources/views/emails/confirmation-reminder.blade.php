@@ -92,7 +92,7 @@
         <div class="urgent-badge">⏰ URGENT - REMINDER KONFIRMASI</div>
         <h1>Reminder Konfirmasi Kehadiran</h1>
         <p>Sistem Informasi Pengaduan dan Penyelesaian Hubungan Industrial</p>
-        <p>Dinas Tenaga Kerja dan Transmigrasi Kabupaten Bungo</p>
+        <p>Dinas Tenaga Kerja dan Perindustrian Kota Padang</p>
     </div>
 
     <div class="content">
@@ -173,15 +173,15 @@
             <h3>📞 Butuh Bantuan?</h3>
             <p>Jika Anda mengalami kesulitan atau memiliki pertanyaan, silakan hubungi:</p>
             <ul>
-                <li><strong>Telepon:</strong> (0747) 21013</li>
-                <li><strong>Email:</strong> nakertrans@bungokab.go.id</li>
+                <li><strong>Telepon:</strong> (0751) 7052345</li>
+                <li><strong>Email:</strong> disnakerin@padang.go.id</li>
             </ul>
         </div>
     </div>
 
     <div class="footer">
         <p>Email ini dikirim secara otomatis oleh sistem. Harap tidak membalas email ini.</p>
-        <p>&copy; {{ date('Y') }} Dinas Tenaga Kerja dan Transmigrasi Kabupaten Bungo. Semua hak dilindungi.</p>
+        <p>&copy; {{ date('Y') }} Dinas Tenaga Kerja dan Perindustrian Kota Padang. Semua hak dilindungi.</p>
         <p>
             <small>
                 Email dikirim pada: {{ now()->format('d F Y, H:i') }} WIB<br>

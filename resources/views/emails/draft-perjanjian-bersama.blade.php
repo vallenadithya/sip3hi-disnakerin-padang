@@ -72,7 +72,7 @@
 
 <body>
     <div class="header">
-        <h1>Draft Perjanjian Bersama - Sistem Informasi Pengaduan dan Penyelesaian Hubungan Industrial Kab. Bungo</h1>
+        <h1>Draft Perjanjian Bersama - Sistem Informasi Pengaduan dan Penyelesaian Hubungan Industrial Kota Padang</h1>
     </div>
 
     <div class="content">
@@ -119,7 +119,7 @@
         <p>Terima kasih atas perhatian dan kerjasamanya.</p>
 
         <p>Salam,<br>
-            <strong>Dinas Tenaga Kerja dan Transmigrasi Kabupaten Bungo</strong>
+            <strong>Dinas Tenaga Kerja dan Perindustrian Kota Padang</strong>
         </p>
     </div>
 

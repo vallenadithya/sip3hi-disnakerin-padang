@@ -188,7 +188,7 @@
                     {{ $jadwal->getJenisJadwalLabel() }}
                 </span>
             </h1>
-            <p style="margin: 5px 0 0 0;">Sistem Informasi Pengaduan dan Penyelesaian Hubungan Industrial Kab. Bungo</p>
+            <p style="margin: 5px 0 0 0;">Sistem Informasi Pengaduan dan Penyelesaian Hubungan Industrial Kota Padang</p>
         </div>
 
         <p>Yth. {{ $recipient['name'] }},</p>
@@ -412,8 +412,8 @@
             <p>Email ini dikirim secara otomatis oleh sistem.<br>
                 Jika ada pertanyaan, silakan hubungi mediator yang menangani kasus Anda.</p>
             <p style="margin-top: 15px;">
-                <strong>Dinas Tenaga Kerja dan Transmigrasi Kab. Bungo</strong><br>
-                Sistem Informasi Pengaduan dan Penyelesaian Hubungan Industrial Kab. Bungo
+                <strong>Dinas Tenaga Kerja dan Perindustrian Kota Padang</strong><br>
+                Sistem Informasi Pengaduan dan Penyelesaian Hubungan Industrial Kota Padang
             </p>
         </div>
     </div>

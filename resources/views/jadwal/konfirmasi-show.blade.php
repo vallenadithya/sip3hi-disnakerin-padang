@@ -483,8 +483,8 @@
                                 <span>Butuh Bantuan?</span>
                             </h4>
                             <div class="space-y-2 text-sm text-blue-700">
-                                <p>📧 <strong>Email:</strong> nakertrans@bungokab.go.id</p>
-                                <p>📱 <strong>Telepon:</strong>(0747) 21013</p>
+                                <p>📧 <strong>Email:</strong> disnakerin@padang.go.id</p>
+                                <p>📱 <strong>Telepon:</strong>(0751) 7052345</p>
                                 <p>🕒 <strong>Jam Layanan:</strong> Senin - Jumat, 08:00 - 16:00 WIB</p>
                             </div>
                         </div>

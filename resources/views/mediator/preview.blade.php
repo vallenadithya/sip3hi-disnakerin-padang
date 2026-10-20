@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Preview SK Mediator - SIPPPHI</title>
+    <title>Preview SK Mediator - SIP3HI</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {

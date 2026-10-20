@@ -565,7 +565,7 @@
 
                             <!-- Nomor Surat -->
                             <div class="space-y-2 mb-6 text-right">
-                                <p class="text-gray-700">Muara Bungo,
+                                <p class="text-gray-700">Padang,
                                     {{ \Carbon\Carbon::parse($anjuran->created_at)->translatedFormat('d F Y') }}</p>
                             </div>
 
@@ -667,7 +667,7 @@
                                 <div class="text-blue-700 text-justify">
                                     <p class="mb-4">
                                         Dokumen anjuran ini dikeluarkan oleh Mediator Hubungan Industrial dan disetujui
-                                        oleh Kepala Dinas Tenaga Kerja dan Transmigrasi Kabupaten Bungo.
+                                        oleh Kepala Dinas Tenaga Kerja dan Perindustrian Kota Padang.
                                     </p>
                                 </div>
                             </div>

@@ -155,7 +155,7 @@
         <!-- Footer -->
         @include('components.pdf.footer', [
             'footerText' =>
-                'Laporan Hasil Mediasi ini dikeluarkan oleh Mediator Hubungan Industrial Dinas Tenaga Kerja dan Transmigrasi Kabupaten Bungo pada ' .
+                'Laporan Hasil Mediasi ini dikeluarkan oleh Mediator Hubungan Industrial Dinas Tenaga Kerja dan Perindustrian Kota Padang pada ' .
                 \Carbon\Carbon::parse($laporanHasilMediasi->created_at)->translatedFormat('d F Y') .
                 ' pukul ' .
                 \Carbon\Carbon::parse($laporanHasilMediasi->created_at)->format('H:i') .

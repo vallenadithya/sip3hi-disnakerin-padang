@@ -37,7 +37,7 @@
                 <div class="bg-gradient-to-br from-yellow-500 to-orange-500 rounded-xl p-8 text-white mb-6">
                     <h3 class="text-2xl font-bold mb-2">Selamat Datang, {{ $user->terlapor->nama_terlapor }}</h3>
                     <p class="text-yellow-100">Dashboard Pihak Berselisih yang Dilaporkan - Sistem Informasi Pengaduan
-                        dan Penyelesaian Perselisihan Hubungan Industrial Kab. Bungo</p>
+                        dan Penyelesaian Perselisihan Hubungan Industrial Kota Padang</p>
                 </div>
 
                 {{-- Anjuran Response Alert (jika ada) --}}
@@ -454,11 +454,11 @@
                                     </div>
                                     <div>
                                         <p class="text-sm font-medium text-gray-900">Call Center</p>
-                                        <p class="text-xs text-gray-600"> (0747) 21013</p>
+                                        <p class="text-xs text-gray-600"> (0751) 7052345</p>
                                     </div>
                                 </a>
 
-                                <a href="mailto:mediasi@disnaker.bungo.go.id"
+                                <a href="mailto:disnakerin@padang.go.id"
                                     class="flex items-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
                                     <div class="p-2 bg-primary rounded-lg mr-3">
                                         <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
@@ -470,7 +470,7 @@
                                     </div>
                                     <div>
                                         <p class="text-sm font-medium text-gray-900">Email Support</p>
-                                        <p class="text-xs text-gray-600">nakertrans@bungokab.go.id</p>
+                                        <p class="text-xs text-gray-600">disnakerin@padang.go.id</p>
                                     </div>
                                 </a>
                             </div>

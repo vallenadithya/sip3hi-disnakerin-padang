@@ -37,7 +37,7 @@
                 <div class="bg-gradient-to-br from-green-500 to-green-600 rounded-xl p-8 text-white mb-6">
                     <h3 class="text-2xl font-bold mb-2">Selamat Datang, {{ $user->mediator->nama_mediator }}</h3>
                     <p class="text-green-100">Dashboard Mediator - Sistem Informasi Pengaduan
-                        dan Penyelesaian Perselisihan Hubungan Industrial Kab. Bungo</p>
+                        dan Penyelesaian Perselisihan Hubungan Industrial Kota Padang</p>
                     <div class="mt-4">
                         <span class="bg-green-400 px-3 py-1 rounded-full text-sm font-medium text-green-900">
                             Role: {{ ucfirst($user->active_role) }}

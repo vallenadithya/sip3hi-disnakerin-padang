@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Registrasi Berhasil - SIPPPHI</title>
+    <title>Registrasi Berhasil - SIP3HI</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -135,9 +135,9 @@
                 <div class="mt-8 text-center">
                     <p class="text-xs text-gray-500">
                         Butuh bantuan? Hubungi admin di
-                        <a href="mailto:admin@sippphi-bungo.go.id"
+                        <a href="mailto:disnakerin@padang.go.id"
                             class="text-primary hover:text-primary-dark font-medium">
-                            admin@sippphi-bungo.go.id
+                            disnakerin@padang.go.id
                         </a>
                     </p>
                 </div>

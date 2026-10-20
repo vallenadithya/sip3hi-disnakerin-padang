@@ -20,7 +20,7 @@ Komponen utama yang bisa digunakan seperti `<x-pdf-layout>` dengan:
 
 Komponen kop surat yang berisi:
 
--   Logo Kabupaten Bungo
+-   Logo Kota Padang
 -   Nama dinas
 -   Alamat lengkap
 -   Informasi kontak
@@ -176,12 +176,12 @@ public function generatePdf($id)
 <x-pdf-layout
     title="Anjuran"
     header="ANJURAN"
-    :footerText="'Anjuran ini dikeluarkan secara resmi oleh Mediator Hubungan Industrial dan disetujui oleh Kepala Dinas Tenaga Kerja dan Transmigrasi Kabupaten Bungo'"
+    :footerText="'Anjuran ini dikeluarkan secara resmi oleh Mediator Hubungan Industrial dan disetujui oleh Kepala Dinas Tenaga Kerja dan Perindustrian Kota Padang'"
     :approvalDate="$anjuran->status_approval === 'published' ? \Carbon\Carbon::parse($anjuran->published_at)->translatedFormat('d F Y') : \Carbon\Carbon::parse($anjuran->created_at)->translatedFormat('d F Y')"
     :approvalTime="$anjuran->status_approval === 'published' ? \Carbon\Carbon::parse($anjuran->published_at)->format('H:i') : \Carbon\Carbon::parse($anjuran->created_at)->format('H:i')"
 >
     <div class="document-info">
-        <p style="text-align: right;">Muara Bungo, {{ \Carbon\Carbon::parse($anjuran->created_at)->translatedFormat('d F Y') }}</p>
+        <p style="text-align: right;">Padang, {{ \Carbon\Carbon::parse($anjuran->created_at)->translatedFormat('d F Y') }}</p>
         <p>Nomor: {{ $anjuran->nomor_anjuran }}</p>
         <p>Lampiran: -</p>
         <p>Hal: Anjuran</p>

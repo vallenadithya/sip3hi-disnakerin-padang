@@ -47,7 +47,7 @@ class TestDirectEmailCommand extends Command
                     'actionUrl' => route('kepala-dinas.mediator.approval.index')
                 ], function ($message) use ($kepalaDinas) {
                     $message->to($kepalaDinas->email)
-                        ->subject('Test - Mediator Baru Mendaftar - SIPPPHI');
+                        ->subject('Test - Mediator Baru Mendaftar - SIP3HI');
                 });
                 $this->info('Email to Kepala Dinas sent successfully!');
             } catch (\Exception $e) {
@@ -62,7 +62,7 @@ class TestDirectEmailCommand extends Command
                     'registerUrl' => route('mediator.register')
                 ], function ($message) use ($mediator) {
                     $message->to($mediator->user->email)
-                        ->subject('Test - Registrasi Mediator Ditolak - SIPPPHI');
+                        ->subject('Test - Registrasi Mediator Ditolak - SIP3HI');
                 });
                 $this->info('Rejection email to Mediator sent successfully!');
             } catch (\Exception $e) {

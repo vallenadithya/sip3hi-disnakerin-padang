@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Registrasi Mediator - SIPPPHI</title>
+    <title>Registrasi Mediator - SIP3HI</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -48,7 +48,7 @@
                         <img src="/img/logo_padang.svg" alt="Logo Kota Padang" class="w-full h-full object-contain">
                     </div>
                 </div>
-                <h1 class="text-2xl font-bold mb-2 text-gray-800">Registrasi Mediator SIPPPHI</h1>
+                <h1 class="text-2xl font-bold mb-2 text-gray-800">Registrasi Mediator SIP3HI</h1>
                 <h3 class="text-lg font-semibold mb-3 text-gray-600">
                     Sistem Informasi Penyelesaian Hubungan Industrial & Pelaporan PHK Kota Padang
                 </h3>

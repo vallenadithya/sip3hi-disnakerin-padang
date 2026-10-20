@@ -45,7 +45,7 @@ class MediatorApprovedNotification extends Notification implements ShouldQueue
         ]);
 
         return (new MailMessage)
-            ->subject('Akun Mediator Anda Telah Disetujui - SIPPPHI')
+            ->subject('Akun Mediator Anda Telah Disetujui - SIP3HI')
             ->greeting('Selamat!')
             ->line('Registrasi mediator Anda telah disetujui oleh Kepala Dinas.')
             ->line('Berikut adalah kredensial login Anda:')
@@ -53,7 +53,7 @@ class MediatorApprovedNotification extends Notification implements ShouldQueue
             ->line("**Password:** {$password}")
             ->line('**PENTING:** Silakan ganti password Anda setelah login pertama kali.')
             ->action('Login ke Sistem', route('login'))
-            ->line('Terima kasih telah bergabung dengan sistem SIPPPHI.')
+            ->line('Terima kasih telah bergabung dengan sistem SIP3HI.')
             ->line('Jika Anda mengalami masalah, silakan hubungi admin sistem.');
     }
 
